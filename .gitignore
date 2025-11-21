@@ -26,3 +26,6 @@ Thumbs.db
 # Build
 dist/
 build/
+
+# Elasticsearch data (AGREGA ESTA LÍNEA)
+src/data/
