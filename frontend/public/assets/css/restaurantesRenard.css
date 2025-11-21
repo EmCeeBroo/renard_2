@@ -1,0 +1,290 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  background: #ffe2d1;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contenedor principal de la galería */
+.galeria-restaurantes {
+  padding: 40px 40px 20px;
+  flex: 1;
+}
+
+/* Título principal - Adaptado a RENARD */
+.titulo-galeria {
+  text-align: center;
+  padding: 0px 20px 20px;
+  font-size: 2.5rem;
+  color: #fd7e14;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Grid de restaurantes - Como el original pero responsivo */
+.grid-restaurantes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px 0;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Tarjeta individual de restaurante - Manteniendo el diseño original */
+.restaurante {
+  background-size: cover;
+  background-position: center;
+  height: 280px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.restaurante:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Overlay oscuro para legibilidad */
+.restaurante::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  transition: background 0.3s ease;
+  border-radius: 12px;
+}
+
+.restaurante:hover::after {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+}
+
+/* Nombre del restaurante */
+.restaurante .nombre {
+  position: relative;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 700;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  margin-bottom: 5px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Eslogan */
+.restaurante .eslogan {
+  position: relative;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  font-weight: 500;
+  z-index: 2;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  line-height: 1.3;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Estados de carga */
+.loading-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(253, 126, 20, 0.1);
+  border-radius: 50%;
+  border-top-color: #fd7e14;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Estado vacío */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.empty-state i {
+  font-size: 4rem;
+  color: #fd7e14;
+  margin-bottom: 20px;
+  opacity: 0.6;
+}
+
+.empty-state h3 {
+  margin-bottom: 15px;
+  color: #fd7e14;
+  font-size: 1.3rem;
+}
+
+.empty-state p {
+  max-width: 400px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Footer - RENARD Style */
+.footer-info {
+  background: linear-gradient(135deg, #fd7e14 0%, #ff7f50 100%);
+  text-align: center;
+  padding: 40px 20px;
+  color: white;
+  position: relative;
+  margin-top: auto;
+}
+
+.footer-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.footer-info > * {
+  position: relative;
+  z-index: 1;
+}
+
+.footer-info img {
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.footer-info h3 {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.footer-info p {
+  opacity: 0.9;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Responsive Design - Manteniendo el original pero mejorado */
+@media (max-width: 1400px) {
+  .grid-restaurantes {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .galeria-restaurantes {
+    padding: 40px 20px 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid-restaurantes {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .restaurante {
+    height: 250px;
+  }
+  
+  .titulo-galeria {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .galeria-restaurantes {
+    padding: 30px 15px 15px;
+  }
+  
+  .titulo-galeria {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  
+  .grid-restaurantes {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 15px 0;
+  }
+  
+  .restaurante {
+    height: 220px;
+    padding: 15px;
+  }
+  
+  .restaurante .nombre {
+    font-size: 1.2rem;
+  }
+  
+  .restaurante .eslogan {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .galeria-restaurantes {
+    padding: 20px 10px 10px;
+  }
+  
+  .titulo-galeria {
+    font-size: 1.8rem;
+    padding: 0 10px 15px;
+  }
+  
+  .grid-restaurantes {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .restaurante {
+    height: 200px;
+    padding: 15px;
+  }
+  
+  .restaurante .nombre {
+    font-size: 1.1rem;
+  }
+  
+  .restaurante .eslogan {
+    font-size: 0.8rem;
+  }
+}

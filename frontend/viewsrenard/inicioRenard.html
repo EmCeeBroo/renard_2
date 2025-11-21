@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Inicio - RENARD</title>
+  <link rel="stylesheet" href="../public/assets/css/inicioRenard.css" />
+  <link rel="stylesheet" href="../public/assets/css/navbar.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <section>
+    <h2>Reserva en los mejores restaurantes</h2>
+    <p>Descubre lugares increíbles, experiencias únicas y sabores inolvidables.</p>
+  </section>
+
+  <!-- Productos estilo galería -->
+  <section>
+    <h2>Nuestros Productos</h2>
+    <div id="productosGrid">
+      <!-- Se insertan dinámicamente -->
+    </div>
+  </section>
+
+  <!-- Vistas menú -->
+  <section>
+    <button id="menuToggle">Mostrar más opciones</button>
+    <div id="vistasMenu" class="hidden">
+      <ul>
+        <li><a href="./reservaRenard.html">Reservas</a></li>
+        <li><a href="./restaurantesRenard.html">Restaurantes</a></li>
+        <li><a href="./perfil.html">Perfil</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section>
+    <div>
+      <div style="text-align: center;">
+        <img src="../../public/assets/img/renard.png" alt="Ilustración" width="150" />
+      </div>
+      <div>
+        <h2>CONTÁCTANOS</h2>
+        <form>
+          <input type="text" placeholder="Nombre" required />
+          <input type="email" placeholder="Email" required />
+          <input type="text" placeholder="Celular" required />
+          <select>
+            <option disabled selected>¿Por qué nos contactas?</option>
+            <option>Sugerencia</option>
+            <option>Reclamo</option>
+            <option>Felicitación</option>
+          </select>
+          <textarea placeholder="Escríbenos..." rows="4"></textarea>
+          <button type="submit">Enviar</button>
+        </form>
+        <div>
+          <p>También puedes contactarnos directo vía WhatsApp</p>
+          <a href="https://wa.me/573003000000" target="_blank">
+            <button>
+              <img src="../assets/img/whatsapp2.png" alt="WhatsApp" width="20" />
+              320 9456814
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="../public/assets/js/inicioRenard.js"></script>
+  <script src="../viewsrenard/navbar.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderNavbar('navbar-container');
+      cargarProductos();
+
+      const toggle = document.getElementById('menuToggle');
+      const menu = document.getElementById('vistasMenu');
+      toggle.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+      });
+    });
+
+    async function cargarProductos() {
+      try {
+        const res = await fetch('http://192.168.0.15:5500/renard/producto');
+        const productos = await res.json();
+
+        const contenedor = document.getElementById('productosGrid');
+        contenedor.innerHTML = '';
+
+        productos.forEach(producto => {
+          const div = document.createElement('div');
+          div.style.backgroundImage = `url('../public/assets/img/producto/${producto.imagenproducto || 'default.png'}')`;
+          div.innerHTML = `<div class="overlay">${producto.nombre}</div>`;
+          contenedor.appendChild(div);
+        });
+      } catch (error) {
+        console.error('Error al cargar productos:', error);
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,203 @@
+:root{
+  --primary: #fd7e14;
+  --secondary: #ff7f50;
+  --bg-color: #ffe2d1;
+  --text-color: #333;
+  --card-border: rgba(253,126,20,0.1);
+}
+
+/* Reset y tipografía global */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+html,body{height:100%}
+body{
+  background:var(--bg-color);
+  min-height:100vh;
+  color:var(--text-color);
+  display:flex;
+  flex-direction:column;
+}
+
+/* Contenedor principal */
+.reserva-container{
+  display:flex;
+  gap:40px;
+  max-width:1400px;
+  margin:20px auto;
+  padding:20px;
+  flex:1;
+  align-items:flex-start;
+}
+
+/* FORMULARIO */
+.formulario{
+  flex:1;
+  max-width:600px; /* evita estirar */
+  background:#fff;
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(253,126,20,0.1);
+  border:1px solid var(--card-border);
+  animation:fadeInUp .6s ease;
+}
+
+@keyframes fadeInUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.formulario h1{
+  text-align:center;
+  font-size:2.2rem;
+  color:var(--primary);
+  margin-bottom:30px;
+  font-weight:700;
+  background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+/* Título de sección */
+.section-title{
+  font-size:1.3rem;font-weight:600;color:var(--primary);
+  margin-bottom:20px;display:flex;align-items:center;gap:10px;
+}
+.section-title i{font-size:1.3rem}
+
+/* RESTAURANTES (grilla) */
+.restaurantes{
+  display:grid;
+  grid-template-columns:repeat(3,1fr); /* 3 columnas desktop */
+  gap:20px;
+  margin-bottom:30px;
+}
+
+.restaurante{
+  position:relative;
+  height:170px; /* altura atractiva */
+  background-size:cover;background-position:center;
+  border-radius:12px;cursor:pointer;border:3px solid transparent;
+  transition:all .3s ease;display:flex;align-items:flex-end;justify-content:center;
+  color:#fff;font-weight:600;text-shadow:0 2px 4px rgba(0,0,0,0.8);
+  padding:15px;box-sizing:border-box;overflow:hidden;text-decoration:none;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+.restaurante::before{
+  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+  background:linear-gradient(transparent 40%, rgba(0,0,0,0.7));
+  border-radius:12px;transition:all .3s ease;
+}
+.restaurante:hover{ border-color:var(--primary); box-shadow:0 8px 25px rgba(253,126,20,0.3); transform:translateY(-3px) }
+.restaurante:hover::before{ background:linear-gradient(transparent 20%, rgba(253,126,20,0.4)) }
+.restaurante.seleccionado{ border-color:var(--primary); box-shadow:0 0 0 3px rgba(253,126,20,0.3); transform:scale(1.02) }
+
+.restaurante .nombre{
+  position:relative;z-index:2;text-align:center;padding:8px 12px;border-radius:6px;
+  background:rgba(253,126,20,0.9);width:100%;font-size:.95rem;font-weight:600;
+}
+
+/* FILAS Y GRUPOS DENTRO DEL FORM */
+.form-row{ display:flex; gap:20px; margin-bottom:20px; align-items:stretch; }
+.form-group{ flex:1; min-width:0; }
+
+/* LABELS con iconos */
+label{ display:block; margin-bottom:8px; font-weight:600; color:var(--text-color); font-size:.95rem; align-items:center; gap:8px; }
+label i{ color:var(--primary); font-size:1rem }
+
+/* Inputs, selects y textarea */
+input[type="date"], input[type="time"], input[type="number"], input[type="email"],
+textarea, select, input[type="text"]{
+  width:100%; padding:14px 16px; margin-bottom:20px; border:2px solid #e9ecef;
+  border-radius:10px; font-size:16px; box-sizing:border-box; transition:all .3s ease; background:#fff;
+}
+input:focus, textarea:focus, select:focus{ outline:none; border-color:var(--primary); box-shadow:0 0 0 3px rgba(253,126,20,0.1); transform:translateY(-1px); }
+
+/* Select: icono flecha a la derecha */
+select{
+  background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23fd7e14' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position:right 12px center; background-repeat:no-repeat; background-size:16px; padding-right:40px; appearance:none; cursor:pointer;
+}
+select:disabled{ background-color:#f8f9fa; cursor:not-allowed; opacity:.7; }
+
+textarea{ resize:vertical; min-height:100px; line-height:1.5 }
+
+/* BOTON RESERVAR */
+button[type="submit"]{
+  width:100%; padding:16px; background:linear-gradient(90deg,var(--primary),var(--secondary));
+  color:#fff; border:none; border-radius:10px; font-size:18px; font-weight:600; cursor:pointer;
+  transition:all .3s ease; margin-top:20px; text-transform:uppercase; letter-spacing:.5px;
+  box-shadow:0 4px 15px rgba(253,126,20,0.3); display:flex; align-items:center; justify-content:center; gap:8px;
+}
+button[type="submit"]:hover:not(:disabled){ opacity:.95; transform:translateY(-2px); box-shadow:0 6px 20px rgba(253,126,20,0.4) }
+button[type="submit"]:active:not(:disabled){ transform:translateY(0) }
+button[type="submit"]:disabled{ background:#e9ecef; color:#999; cursor:not-allowed; box-shadow:none; transform:none; }
+
+/* MESAS DISPONIBLES */
+.mesas-disponibles{ margin-top:25px; padding:25px; border:2px solid #e9ecef; border-radius:15px; background:#fff; box-shadow:0 2px 15px rgba(253,126,20,0.05) }
+.mesas-disponibles h3{ color:var(--primary); margin-bottom:20px; font-size:1.3rem; font-weight:600; display:flex; gap:10px; align-items:center; }
+.mesas-list{ display:flex; flex-wrap:wrap; gap:12px; margin-top:15px }
+.mesa-btn{ padding:12px 18px; background:#fff; border:2px solid #e9ecef; border-radius:8px; cursor:pointer; transition:all .3s ease; font-weight:500; color:#333; box-shadow:0 2px 8px rgba(0,0,0,0.05); font-size:14px }
+.mesa-btn:hover{ background:#ffe2d1; border-color:var(--primary); transform:translateY(-2px); box-shadow:0 4px 12px rgba(253,126,20,0.15) }
+.mesa-btn.seleccionada{ background:linear-gradient(90deg,var(--primary),var(--secondary)); color:#fff; border-color:var(--primary); box-shadow:0 4px 15px rgba(253,126,20,0.3); transform:scale(1.05) }
+
+/* PANEL DERECHO (brand + features) */
+.imagen-reserva{ flex:1; max-width:400px; display:flex; flex-direction:column; gap:30px; position:sticky; top:20px }
+.brand-showcase{ background:#fff; padding:40px; border-radius:20px; box-shadow:0 10px 30px rgba(253,126,20,0.1); text-align:center; border:1px solid var(--card-border) }
+.brand-showcase img{ width:120px; height:120px; margin-bottom:25px; filter:drop-shadow(0 10px 20px rgba(253,126,20,0.2)); transition:transform .3s ease }
+.brand-showcase img:hover{ transform:scale(1.05) rotate(5deg) }
+.brand-title{ font-size:2.5rem; font-weight:800; color:var(--primary); margin-bottom:15px; background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text }
+.brand-subtitle{ color:#666; font-size:1.1rem; font-weight:500 }
+
+/* Features cards */
+.features-grid{ display:grid; grid-template-columns:1fr; gap:20px }
+.feature-card{ background:#fff; border-radius:15px; padding:25px; border:1px solid var(--card-border); transition:all .3s ease; text-align:left; box-shadow:0 4px 12px rgba(0,0,0,0.05) }
+.feature-card:hover{ transform:translateY(-3px); box-shadow:0 10px 25px rgba(253,126,20,0.15) }
+.feature-icon{ width:50px; height:50px; background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%); border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.3rem; margin-bottom:15px }
+.feature-title{ font-weight:700; color:#333; margin-bottom:8px; font-size:1.1rem }
+.feature-description{ color:#666; font-size:.95rem; line-height:1.5 }
+
+/* Mensajes */
+.mensaje{ margin-top:20px; padding:16px; border-radius:10px; text-align:center; font-weight:500; animation:slideIn .3s ease }
+@keyframes slideIn{ from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+.mensaje.error{ background:linear-gradient(135deg, rgba(220,53,69,0.1), rgba(220,53,69,0.05)); color:#dc3545; border:2px solid rgba(220,53,69,0.2) }
+.mensaje.exito{ background:linear-gradient(135deg, rgba(40,167,69,0.1), rgba(40,167,69,0.05)); color:#28a745; border:2px solid rgba(40,167,69,0.2) }
+
+/* Footer */
+.footer-info{ background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%); text-align:center; padding:40px 20px; color:#fff; position:relative; margin-top:auto }
+.footer-info::before{ content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(255,255,255,0.1) }
+.footer-info > *{ position:relative; z-index:1 }
+.footer-info img{ margin-bottom:20px; opacity:.9 }
+.footer-info h3{ margin-bottom:10px; font-size:1.4rem }
+.footer-info p{ opacity:.9; max-width:400px; margin:0 auto }
+
+/* Loading simple */
+.loading{ display:inline-block; width:20px; height:20px; border:2px solid rgba(255,255,255,0.3); border-radius:50%; border-top-color:white; animation:spin .8s linear infinite }
+@keyframes spin{ to{ transform:rotate(360deg) } }
+
+/* RESPONSIVE */
+/* Tablet (≤1024) */
+@media (max-width:1024px){
+  .reserva-container{ flex-direction:column; gap:30px; align-items:center }
+  .formulario{ max-width:550px }
+  .imagen-reserva{ width:100%; max-width:500px; position:static; order:-1 }
+  .restaurantes{ grid-template-columns:repeat(2,1fr) } /* 2 columnas en tablet */
+}
+
+/* Mobile small (≤768) */
+@media (max-width:768px){
+  .reserva-container{ margin:20px auto; padding:15px }
+  .formulario{ max-width:100%; padding:25px }
+  .form-row{ flex-direction:column; gap:0 }
+  .restaurantes{ grid-template-columns:1fr; gap:12px } /* 1 columna movil */
+  .restaurante{ height:130px }
+  .restaurante .nombre{ font-size:.85rem; padding:8px 10px }
+  .brand-showcase{ padding:30px 25px }
+  .brand-title{ font-size:2rem }
+}
+
+/* Very small (≤480) */
+@media (max-width:480px){
+  .formulario{ padding:20px }
+  .formulario h1{ font-size:1.8rem }
+  .restaurante{ height:110px }
+  .restaurante .nombre{ font-size:.8rem }
+  input, textarea, select{ font-size:14px; padding:10px 12px }
+}

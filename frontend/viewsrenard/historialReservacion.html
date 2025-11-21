@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mis Reservas - RENARD</title>
+  <link rel="stylesheet" href="../public/assets/css/historialReservas.css" />
+  <link rel="stylesheet" href="../public/assets/css/navbar.css" />
+  <link rel="stylesheet" href="../public/assets/css/theme.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <!-- Header de la página -->
+  <section class="page-header">
+    <div class="container">
+      <h1><i class='bx bx-history'></i> Mi Historial de Reservas</h1>
+      <p>Gestiona todas tus reservas desde aquí</p>
+    </div>
+  </section>
+
+  <!-- Filtros -->
+  <section class="filters-section">
+    <div class="container">
+      <div class="filters-group">
+        <div class="filter-item">
+          <label for="filtroEstado">Estado:</label>
+          <select id="filtroEstado" onchange="filtrarReservas()">
+            <option value="todos">Todos</option>
+            <option value="confirmada">Confirmada</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="cancelada">Cancelada</option>
+            <option value="completada">Completada</option>
+          </select>
+        </div>
+        
+        <div class="filter-item">
+          <label for="filtroFecha">Período:</label>
+          <select id="filtroFecha" onchange="filtrarReservas()">
+            <option value="todos">Todos</option>
+            <option value="proximas">Próximas</option>
+            <option value="pasadas">Pasadas</option>
+            <option value="este-mes">Este mes</option>
+          </select>
+        </div>
+
+        <div class="filter-item">
+          <button class="btn-refresh" onclick="iniciarHistorialReservas()">
+            <i class='bx bx-refresh'></i> Actualizar
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lista de reservas -->
+  <section class="reservas-section">
+    <div class="container">
+      <div id="reservasContainer" class="reservas-grid">
+        <!-- Aquí se cargan las reservas dinámicamente -->
+        <div class="loading-state">
+          <i class='bx bx-loader-alt bx-spin'></i>
+          <p>Cargando tus reservas...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Botón volver -->
+  <section class="back-section">
+    <div class="container">
+      <a href="./inicioClient.html" class="btn-secondary">
+        <i class='bx bx-arrow-back'></i> Volver al Inicio
+      </a>
+    </div>
+  </section>
+
+  <!-- Modal para detalles/acciones -->
+  <div id="reservaModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="cerrarModal()">&times;</span>
+      <div id="modalContent">
+        <!-- Contenido dinámico del modal -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer RENARD -->
+    <section class="footer-info">
+        <img src="../public/assets/img/renard.png" alt="RENARD Logo" width="80" />
+        <h3>RENARD - Tu plataforma de reservas</h3>
+        <p>TEAM RENARD. Todos los derechos reservados. © 2025.</p>
+    </section>
+    
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../public/assets/js/historialReservas.js"></script>
+  <script src="../viewsrenard/navbar.js"></script>
+</body>
+</html>

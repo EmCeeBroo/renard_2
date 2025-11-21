@@ -1,0 +1,283 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #fd7e14;
+  --secondary: #ff7f50;
+  --dark: #333;
+  --light: #f8f9fa;
+  --muted: #6c757d;
+  --background: #ffe2d1;
+}
+
+body, html {
+  height: 100%;
+  background-color: var(--background);
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contenedor principal con espacio para navbar */
+.container {
+  flex: 1;
+  padding-top: 40px; /* Espacio para el navbar fijo */
+}
+
+/* Títulos con estilo RENARD */
+h4 {
+  color: var(--primary);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card principal con estilo RENARD */
+#perfilCard {
+  border: 1px solid rgba(253, 126, 20, 0.1);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(253, 126, 20, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.card-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%) !important;
+  color: white;
+  border-radius: 20px 20px 0 0 !important;
+  border: none;
+}
+
+.card-header h4 {
+  color: white !important;
+  background: none !important;
+  -webkit-text-fill-color: white !important;
+  margin: 0;
+}
+
+/* Foto de perfil mejorada */
+#foto {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 4px solid var(--primary);
+  box-shadow: 0 8px 20px rgba(253, 126, 20, 0.3);
+  transition: all 0.3s ease;
+}
+
+#foto:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(253, 126, 20, 0.4);
+}
+
+/* Textos del perfil */
+.card-text {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(253, 126, 20, 0.1);
+}
+
+.card-text:last-of-type {
+  border-bottom: none;
+}
+
+.card-text strong {
+  color: var(--primary);
+  font-weight: 600;
+  display: inline-block;
+  min-width: 160px;
+}
+
+/* Botones con estilo RENARD */
+.btn-primary {
+  background: linear-gradient(90deg, var(--primary), var(--secondary)) !important;
+  border: none !important;
+  color: #fff !important;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(253, 126, 20, 0.3);
+}
+
+.btn-primary:hover {
+  opacity: 0.9 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(253, 126, 20, 0.4) !important;
+}
+
+.btn-outline-secondary {
+  border: 2px solid var(--primary) !important;
+  color: var(--primary) !important;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+  background: linear-gradient(90deg, var(--primary), var(--secondary)) !important;
+  color: #fff !important;
+  border-color: var(--primary) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(253, 126, 20, 0.3);
+}
+
+/* Modales con estilo RENARD */
+.modal-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  border-radius: 10px 10px 0 0;
+}
+
+.modal-title {
+  color: white !important;
+  font-weight: 600;
+}
+
+.btn-close {
+  filter: brightness(0) invert(1);
+}
+
+/* Formularios mejorados */
+.form-label {
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.form-control, .form-select {
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 12px;
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(253, 126, 20, 0.1);
+  outline: none;
+}
+
+/* Icono de cámara mejorado */
+.position-absolute.bottom-0.end-0 {
+  background: linear-gradient(45deg, var(--primary), var(--secondary)) !important;
+  border: 2px solid white;
+}
+
+/* Texto informativo */
+.text-muted {
+  color: var(--muted) !important;
+  font-size: 0.9rem;
+}
+
+/* Footer RENARD */
+.footer-info {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  text-align: center;
+  padding: 40px 20px;
+  color: white;
+  position: relative;
+  margin-top: auto;
+}
+
+.footer-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.footer-info > * {
+  position: relative;
+  z-index: 1;
+}
+
+.footer-info img {
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.footer-info h3 {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  color: white;
+}
+
+.footer-info p {
+  opacity: 0.9;
+  max-width: 400px;
+  margin: 0 auto;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding-top: 30px;
+  }
+
+  #perfilCard {
+    margin: 15px;
+  }
+
+  #foto {
+    width: 120px;
+    height: 120px;
+  }
+
+  .card-text strong {
+    min-width: 120px;
+    font-size: 0.9rem;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+
+  .btn-primary,
+  .btn-outline-secondary {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .d-flex.justify-content-end {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 20px 10px;
+  }
+
+  #foto {
+    width: 100px;
+    height: 100px;
+  }
+
+  .card-text {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .card-text strong {
+    min-width: auto;
+    display: block;
+    margin-bottom: 5px;
+  }
+}

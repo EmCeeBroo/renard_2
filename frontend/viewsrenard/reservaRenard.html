@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reservar | RENARD</title>
+  <link rel="icon" type="image/png" href="../public/assets/img/renard.png">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
+  <link rel="stylesheet" href="../public/assets/css/reservaRenard.css"/>
+  <link rel="stylesheet" href="../public/assets/css/theme.css" />
+  <link rel="stylesheet" href="../public/assets/css/navbar.css" />
+</head>
+<body>
+    <div id="navbar-container"></div>
+    
+    <div class="reserva-container">
+      <div class="formulario">
+        <h1>Reservar</h1>
+        
+        <div class="section-title">
+          <i class='bx bx-store'></i>
+          Selecciona tu Restaurante
+        </div>
+        <div class="restaurantes" id="restaurantesContainer">
+          <!-- Aquí irán los restaurantes con imágenes tipo botones -->
+        </div>
+        
+        <form id="formReservacion">
+          <input type="hidden" name="restaurante_fk" id="restaurante_fk" required />
+          <input type="hidden" name="mesa_fk" id="mesa_fk" required />
+          
+          <div class="section-title">
+            <i class='bx bx-calendar'></i>
+            Fecha y Horario
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fecha">
+                <i class='bx bx-calendar-event'></i>
+                Fecha
+              </label>
+              <input type="date" name="fecha" id="fecha" required />
+            </div>
+           
+            <div class="form-group">
+              <label for="hora_inicio">
+                <i class='bx bx-time'></i>
+                Hora de inicio
+              </label>
+              <input type="time" name="hora_inicio" id="hora_inicio" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="hora_fin">
+                <i class='bx bx-time-five'></i>
+                Hora de fin
+              </label>
+              <input type="time" name="hora_fin" id="hora_fin" required />
+            </div>
+           
+            <div class="form-group">
+              <label for="numero_personas">
+                <i class='bx bx-group'></i>
+                Cantidad de personas
+              </label>
+              <input type="number" name="numero_personas" id="numero_personas" min="1" max="20" required />
+            </div>
+          </div>
+          <div class="form-group" id="sucursalContainer" style="display: none;">
+            <label for="sucursal_fk">
+              <i class='bx bx-map-pin'></i>
+              Sucursal
+            </label>
+            <select name="sucursal_fk" id="sucursal_fk" required disabled>
+              <option value="">Seleccione una sucursal</option>
+            </select>
+          </div>
+          <div id="mesasDisponiblesContainer" class="mesas-disponibles" style="display:none;">
+            <h3>
+              <i class='bx bx-chair'></i>
+              Mesas disponibles
+            </h3>
+            <div id="mesasDisponiblesList" class="mesas-list">
+              <!-- Mesas disponibles se cargarán aquí -->
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="anotaciones">
+              <i class='bx bx-note'></i>
+              Anotaciones
+            </label>
+            <textarea name="anotaciones" id="anotaciones" rows="3" maxlength="500" placeholder="Alguna petición especial, alergia o preferencia..."></textarea>
+          </div>
+          <button type="submit" id="btnReservar" disabled>
+            <i class='bx bx-check-circle'></i>
+            Reservar
+          </button>
+        </form>
+        <p id="mensaje" class="mensaje"></p>
+      </div>
+      
+      <div class="imagen-reserva">
+        <!-- Brand showcase -->
+        <div class="brand-showcase">
+          <img src="../public/assets/img/renard.png" alt="RENARD Logo" />
+          <h2 class="brand-title">RENARD</h2>
+          <p class="brand-subtitle">Tu experiencia gastronómica perfecta</p>
+        </div>
+
+        <!-- Features -->
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class='bx bx-time-five'></i>
+            </div>
+            <h4 class="feature-title">Reserva Instantánea</h4>
+            <p class="feature-description">Confirma tu mesa en tiempo real sin esperas</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class='bx bx-star'></i>
+            </div>
+            <h4 class="feature-title">Los Mejores Restaurantes</h4>
+            <p class="feature-description">Accede a una selección exclusiva de establecimientos</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class='bx bx-shield-check'></i>
+            </div>
+            <h4 class="feature-title">100% Seguro</h4>
+            <p class="feature-description">Tus datos y reservas están protegidos</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer con información de la plataforma -->
+    <section class="footer-info">
+      <img src="../public/assets/img/renard.png" alt="RENARD Logo" width="80" />
+      <h3>RENARD - Tu plataforma de reservas</h3>
+      <p>TEAM RENARD. Todos los derechos reservados. © 2025.</p>
+    </section>
+   
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../public/assets/js/reservaRenard.js"></script>
+    <script src="../viewsrenard/navbar.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        renderNavbar('navbar-container');
+      });
+    </script>
+</body>
+</html>

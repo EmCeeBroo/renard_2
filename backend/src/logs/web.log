@@ -1,0 +1,140 @@
+2025.10.26 23:14:06 INFO  web[][o.s.p.ProcessEntryPoint] Starting Web Server
+2025.10.26 23:14:08 INFO  web[][o.s.s.p.LogServerVersion] SonarQube Server / 9.9.8.100196 / a6b73d92af974da59414bc4a00dde2882016ea70
+2025.10.26 23:14:08 INFO  web[][o.s.s.p.d.EmbeddedDatabase] Starting embedded database on port 9092 with url jdbc:h2:tcp://127.0.0.1:9092/sonar;NON_KEYWORDS=VALUE
+2025.10.26 23:14:09 INFO  web[][o.s.s.p.d.EmbeddedDatabase] Embedded database started. Data stored in: /opt/sonarqube/data
+2025.10.26 23:14:09 INFO  web[][o.sonar.db.Database] Create JDBC data source for jdbc:h2:tcp://127.0.0.1:9092/sonar;NON_KEYWORDS=VALUE
+2025.10.26 23:14:09 INFO  web[][c.z.h.HikariDataSource] HikariPool-1 - Starting...
+2025.10.26 23:14:09 INFO  web[][o.s.p.ProcessEntryPoint] Gracefully stopping process
+2025.10.26 23:14:09 INFO  web[][c.z.h.p.HikariPool] HikariPool-1 - Added connection conn2: url=jdbc:h2:tcp://127.0.0.1:9092/sonar user=
+2025.10.26 23:14:09 INFO  web[][c.z.h.HikariDataSource] HikariPool-1 - Start completed.
+2025.10.26 23:14:09 WARN  web[][o.s.db.dialect.H2] H2 database should be used for evaluation purpose only.
+2025.10.26 23:18:50 INFO  web[][o.s.p.ProcessEntryPoint] Starting Web Server
+2025.10.26 23:18:51 INFO  web[][o.s.s.p.LogServerVersion] SonarQube Server / 9.9.8.100196 / a6b73d92af974da59414bc4a00dde2882016ea70
+2025.10.26 23:18:54 INFO  web[][o.s.s.p.d.EmbeddedDatabase] Starting embedded database on port 9092 with url jdbc:h2:tcp://127.0.0.1:9092/sonar;NON_KEYWORDS=VALUE
+2025.10.26 23:18:54 INFO  web[][o.s.s.p.d.EmbeddedDatabase] Embedded database started. Data stored in: /opt/sonarqube/data
+2025.10.26 23:18:54 INFO  web[][o.sonar.db.Database] Create JDBC data source for jdbc:h2:tcp://127.0.0.1:9092/sonar;NON_KEYWORDS=VALUE
+2025.10.26 23:18:54 INFO  web[][c.z.h.HikariDataSource] HikariPool-1 - Starting...
+2025.10.26 23:18:54 INFO  web[][c.z.h.p.HikariPool] HikariPool-1 - Added connection conn2: url=jdbc:h2:tcp://127.0.0.1:9092/sonar user=
+2025.10.26 23:18:54 INFO  web[][c.z.h.HikariDataSource] HikariPool-1 - Start completed.
+2025.10.26 23:18:54 WARN  web[][o.s.db.dialect.H2] H2 database should be used for evaluation purpose only.
+2025.10.26 23:18:56 INFO  web[][o.s.s.p.ServerFileSystemImpl] SonarQube home: /opt/sonarqube
+2025.10.26 23:18:56 INFO  web[][o.s.s.u.SystemPasscodeImpl] System authentication by passcode is disabled
+2025.10.26 23:18:57 WARN  web[][o.s.c.a.AnnotationConfigApplicationContext] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jdk.internal.loader.ClassLoaders$AppClassLoader@77d67cf3-org.sonar.server.plugins.ServerPluginManager': Initialization of bean failed; nested exception is Plugin SonarQube CNES Report [cnesreport] requires at least Sonar Plugin API version 10.7.0.2191 (current: 9.14.0.375)
+2025.10.26 23:18:57 ERROR web[][o.s.s.p.PlatformImpl] Web server startup failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jdk.internal.loader.ClassLoaders$AppClassLoader@77d67cf3-org.sonar.server.plugins.ServerPluginManager': Initialization of bean failed; nested exception is Plugin SonarQube CNES Report [cnesreport] requires at least Sonar Plugin API version 10.7.0.2191 (current: 9.14.0.375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:628)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.sonar.core.platform.SpringComponentContainer.startComponents(SpringComponentContainer.java:187)
+	at org.sonar.server.platform.platformlevel.PlatformLevel.start(PlatformLevel.java:80)
+	at org.sonar.server.platform.platformlevel.PlatformLevel2.start(PlatformLevel2.java:103)
+	at org.sonar.server.platform.PlatformImpl.start(PlatformImpl.java:196)
+	at org.sonar.server.platform.PlatformImpl.startLevel2Container(PlatformImpl.java:169)
+	at org.sonar.server.platform.PlatformImpl.init(PlatformImpl.java:77)
+	at org.sonar.server.platform.web.PlatformServletContextListener.contextInitialized(PlatformServletContextListener.java:43)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4005)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4446)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(Unknown Source)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:721)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(Unknown Source)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:211)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:415)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:874)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:438)
+	at org.sonar.server.app.EmbeddedTomcat.start(EmbeddedTomcat.java:72)
+	at org.sonar.server.app.WebServer.start(WebServer.java:55)
+	at org.sonar.process.ProcessEntryPoint.launch(ProcessEntryPoint.java:97)
+	at org.sonar.process.ProcessEntryPoint.launch(ProcessEntryPoint.java:81)
+	at org.sonar.server.app.WebServer.main(WebServer.java:104)
+Caused by: org.sonar.api.utils.MessageException: Plugin SonarQube CNES Report [cnesreport] requires at least Sonar Plugin API version 10.7.0.2191 (current: 9.14.0.375)
+2025.10.26 23:18:57 INFO  web[][c.z.h.HikariDataSource] HikariPool-1 - Shutdown initiated...
+2025.10.26 23:18:57 INFO  web[][c.z.h.HikariDataSource] HikariPool-1 - Shutdown completed.
+2025.10.26 23:18:57 INFO  web[][o.s.s.p.d.EmbeddedDatabase] Embedded database stopped
+2025.10.26 23:18:58 INFO  web[][o.s.s.a.EmbeddedTomcat] HTTP connector enabled on port 9000
+2025.10.26 23:18:58 INFO  web[][o.s.p.ProcessEntryPoint] Hard stopping process
+2025.10.26 23:21:52 INFO  web[][o.s.p.ProcessEntryPoint] Starting Web Server
+2025.10.26 23:21:53 INFO  web[][o.s.s.p.LogServerVersion] SonarQube Server / 9.9.8.100196 / a6b73d92af974da59414bc4a00dde2882016ea70
+2025.10.26 23:21:54 INFO  web[][o.s.s.p.d.EmbeddedDatabase] Starting embedded database on port 9092 with url jdbc:h2:tcp://127.0.0.1:9092/sonar;NON_KEYWORDS=VALUE
+2025.10.26 23:21:54 INFO  web[][o.s.s.p.d.EmbeddedDatabase] Embedded database started. Data stored in: /opt/sonarqube/data
+2025.10.26 23:21:55 INFO  web[][o.sonar.db.Database] Create JDBC data source for jdbc:h2:tcp://127.0.0.1:9092/sonar;NON_KEYWORDS=VALUE
+2025.10.26 23:21:55 INFO  web[][c.z.h.HikariDataSource] HikariPool-1 - Starting...
+2025.10.26 23:21:55 INFO  web[][c.z.h.p.HikariPool] HikariPool-1 - Added connection conn2: url=jdbc:h2:tcp://127.0.0.1:9092/sonar user=
+2025.10.26 23:21:55 INFO  web[][c.z.h.HikariDataSource] HikariPool-1 - Start completed.
+2025.10.26 23:21:55 WARN  web[][o.s.db.dialect.H2] H2 database should be used for evaluation purpose only.
+2025.10.26 23:21:58 INFO  web[][o.s.s.p.ServerFileSystemImpl] SonarQube home: /opt/sonarqube
+2025.10.26 23:21:58 INFO  web[][o.s.s.u.SystemPasscodeImpl] System authentication by passcode is disabled
+2025.10.26 23:21:59 WARN  web[][o.s.c.a.AnnotationConfigApplicationContext] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jdk.internal.loader.ClassLoaders$AppClassLoader@77d67cf3-org.sonar.server.plugins.ServerPluginManager': Initialization of bean failed; nested exception is Plugin SonarQube CNES Report [cnesreport] requires at least Sonar Plugin API version 10.7.0.2191 (current: 9.14.0.375)
+2025.10.26 23:21:59 ERROR web[][o.s.s.p.PlatformImpl] Web server startup failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jdk.internal.loader.ClassLoaders$AppClassLoader@77d67cf3-org.sonar.server.plugins.ServerPluginManager': Initialization of bean failed; nested exception is Plugin SonarQube CNES Report [cnesreport] requires at least Sonar Plugin API version 10.7.0.2191 (current: 9.14.0.375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:628)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.sonar.core.platform.SpringComponentContainer.startComponents(SpringComponentContainer.java:187)
+	at org.sonar.server.platform.platformlevel.PlatformLevel.start(PlatformLevel.java:80)
+	at org.sonar.server.platform.platformlevel.PlatformLevel2.start(PlatformLevel2.java:103)
+	at org.sonar.server.platform.PlatformImpl.start(PlatformImpl.java:196)
+	at org.sonar.server.platform.PlatformImpl.startLevel2Container(PlatformImpl.java:169)
+	at org.sonar.server.platform.PlatformImpl.init(PlatformImpl.java:77)
+	at org.sonar.server.platform.web.PlatformServletContextListener.contextInitialized(PlatformServletContextListener.java:43)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4005)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4446)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(Unknown Source)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:721)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(Unknown Source)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:211)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:415)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:874)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:438)
+	at org.sonar.server.app.EmbeddedTomcat.start(EmbeddedTomcat.java:72)
+	at org.sonar.server.app.WebServer.start(WebServer.java:55)
+	at org.sonar.process.ProcessEntryPoint.launch(ProcessEntryPoint.java:97)
+	at org.sonar.process.ProcessEntryPoint.launch(ProcessEntryPoint.java:81)
+	at org.sonar.server.app.WebServer.main(WebServer.java:104)
+Caused by: org.sonar.api.utils.MessageException: Plugin SonarQube CNES Report [cnesreport] requires at least Sonar Plugin API version 10.7.0.2191 (current: 9.14.0.375)
+2025.10.26 23:21:59 INFO  web[][c.z.h.HikariDataSource] HikariPool-1 - Shutdown initiated...
+2025.10.26 23:21:59 INFO  web[][c.z.h.HikariDataSource] HikariPool-1 - Shutdown completed.
+2025.10.26 23:21:59 INFO  web[][o.s.s.p.d.EmbeddedDatabase] Embedded database stopped
+2025.10.26 23:22:00 INFO  web[][o.s.s.a.EmbeddedTomcat] HTTP connector enabled on port 9000
+2025.10.26 23:22:00 INFO  web[][o.s.p.ProcessEntryPoint] Hard stopping process

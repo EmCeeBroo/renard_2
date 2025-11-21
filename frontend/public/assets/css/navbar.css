@@ -1,0 +1,276 @@
+/* Navbar mejorado - navbar.css */
+.nav-bar {
+  width: 100%;
+  padding: 15px 40px;
+  background: linear-gradient(90deg, #fd7e14, #ff7f50);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  box-shadow: 0px 3px 15px rgba(253, 126, 20, 0.3);
+  position: relative;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-center > a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.nav-center > a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.nav-center > a i {
+  font-size: 1.1rem;
+}
+
+/* Dropdown de usuario */
+.user-dropdown {
+  position: relative;
+}
+
+.user-btn {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.user-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.user-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(253, 126, 20, 0.1);
+  margin-top: 10px;
+}
+
+.user-dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.user-dropdown-menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.user-dropdown-menu a:hover {
+  background: rgba(253, 126, 20, 0.1);
+  color: #fd7e14;
+}
+
+.info-icon{
+  color: #f0f0f0;
+}
+
+.user-dropdown-menu a:first-child {
+  border-radius: 10px 10px 0 0;
+}
+
+.user-dropdown-menu a:last-child {
+  border-radius: 0 0 10px 10px;
+  color: #dc3545;
+}
+
+.user-dropdown-menu a:last-child:hover {
+  background: rgba(220, 53, 69, 0.1);
+  color: #dc3545;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: rgba(253, 126, 20, 0.2);
+  margin: 5px 0;
+}
+
+/* Botón móvil */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Menú móvil */
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #fd7e14, #ff7f50);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 12px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.mobile-menu a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(5px);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+/* ====== BOTÓN TEMA ====== */
+.theme-toggle-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #dfdad5; /* color naranja de tu tema */
+  padding: 10px;
+}
+
+
+.theme-toggle-btn:hover {
+  color: #ff9f43;
+}
+
+/* ====== TEMA OSCURO ====== */
+body.dark-theme {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+/* Ajustes del navbar en modo oscuro */
+body.dark-theme .nav-bar {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+body.dark-theme .nav-bar a {
+  color: #f0f0f0;
+}
+
+body.dark-theme .nav-bar a:hover {
+  color: #fd7e14;
+}
+
+body, .nav-bar, .nav-bar a {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-bar {
+    padding: 15px 20px;
+  }
+  
+  .nav-center {
+    display: none;
+  }
+  
+  .mobile-menu-btn {
+    display: block;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-bar {
+    padding: 12px 15px;
+  }
+  
+  .logo {
+    font-size: 1.3rem;
+  }
+  
+  .mobile-menu {
+    padding: 15px;
+  }
+}
+

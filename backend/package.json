@@ -1,0 +1,31 @@
+{
+  "name": "renard_backend",
+  "version": "1.0.0",
+  "description": "API backend del proyecto Renard, desarrollada con Node.js y Express",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "author": "EmCeeBroo",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
+    "morgan": "^1.10.0",
+    "multer": "^2.0.1",
+    "mysql2": "^3.14.0",
+    "nodemailer": "^7.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "sonar-scanner": "^3.1.0"
+  }
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disponibilidad de Reservas y Mesas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../public/assets/css/dashboard.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Sidebar Container for Dynamic Sidebar -->
+    <div id="sidebar-container"></div>
+
+    <!-- Main Content -->
+    <div class="admin-content">
+        <div class="admin-header">
+            <img src="Gemini_Generated_Image_gbpmhngbpmhngbpm.png" alt="Logo" style="height: 90px; margin-right: 15px;">
+            <h2><i class="bi bi-bar-chart-fill"></i> Disponibilidad de Reservas y Mesas</h2>
+            <h3>Panel gráfico de administración</h3>
+        </div>
+
+        <!-- Filtros -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4><i class="bi bi-funnel"></i> Filtros</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="fecha" class="form-label">Fecha</label>
+                        <input type="date" class="form-control" id="fecha" value="">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="hora" class="form-label">Hora</label>
+                        <input type="time" class="form-control" id="hora" value="12:00">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="sucursal" class="form-label">Sucursal</label>
+                        <select class="form-select" id="sucursal">
+                            <option value="">Todas las sucursales</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <button class="btn btn-primary" onclick="cargarDatos()">
+                        <i class="bi bi-arrow-repeat"></i> Actualizar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Estadísticas rápidas -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card text-white bg-primary">
+                    <div class="card-body">
+                        <h5><i class="bi bi-people"></i> Mesas Totales</h5>
+                        <h3 id="total-mesas">0</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-success">
+                    <div class="card-body">
+                        <h5><i class="bi bi-check-circle"></i> Mesas Disponibles</h5>
+                        <h3 id="mesas-disponibles">0</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-warning">
+                    <div class="card-body">
+                        <h5><i class="bi bi-clock"></i> Reservas Pendientes</h5>
+                        <h3 id="reservas-pendientes">0</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-info">
+                    <div class="card-body">
+                        <h5><i class="bi bi-calendar-check"></i> Reservas Confirmadas</h5>
+                        <h3 id="reservas-confirmadas">0</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gráficos -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="bi bi-pie-chart"></i> Estado de Mesas</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="estadoMesasChart" height="250"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="bi bi-bar-chart"></i> Reservas por Hora</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="reservasHoraChart" height="250"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla de disponibilidad detallada -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5><i class="bi bi-table"></i> Disponibilidad Detallada por Zona</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped" aria-label="table count by areas">
+                        <thead>
+                            <tr>
+                                <th>Zona</th>
+                                <th>Total Mesas</th>
+                                <th>Disponibles</th>
+                                <th>Ocupadas</th>
+                                <th>Porcentaje Disponible</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-disponibilidad">
+                            <!-- Los datos se cargarán dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../ViewsRenard/js/sidebar-dinamico.js" defer></script>
+    <script src="../ViewsRenard/js/disponibilidad-reservas-mesas.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializar sidebar dinámico
+            initDynamicSidebar();
+            
+            // Establecer fecha de hoy por defecto
+            const hoy = new Date().toISOString().split('T')[0];
+            document.getElementById('fecha').value = hoy;
+            
+            // Cargar datos iniciales
+            cargarSucursales();
+            cargarDatos();
+        });
+    </script>
+</body>
+</html>

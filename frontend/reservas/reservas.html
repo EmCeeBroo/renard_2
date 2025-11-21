@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/jpeg" href="../public/assets/img/renard.png.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../public/assets/css/usuarioPanel.css" />
+  <title>Gestión de Reservaciones - Administrador</title>
+  <script src="../sidebar/sidebar.js" defer></script>
+</head>
+
+<body>
+  <!-- Preload -->
+  <div class="preload" id="preloadId">
+    <div class="preload-spinner"></div>
+    <h3 class="mt-3">Cargando...</h3>
+  </div>
+
+  <!-- Sidebar -->
+  <div id="sidebar-container"></div>
+
+  <!-- Main Content -->
+  <div class="admin-content">
+    <div class="admin-header">
+      <h2><i class="bi bi-calendar-check"></i> Gestión de Reservaciones</h2>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin/dashboard">Inicio</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Reservaciones</li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="admin-card fade-in">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h5 class="mb-0">Listado de Reservaciones</h5>
+        <button class="btn btn-primary-custom" id="btnAgregarReservacion">
+          <i class="fas fa-plus me-2"></i> Agregar Reservación
+        </button>
+      </div>
+
+      <!-- Filtros y búsqueda -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-search"></i></span>
+            <input type="text" class="form-control" id="buscarReservacion"
+              placeholder="Buscar reservación por usuario o mesa...">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <select class="form-select" id="filtroRestaurante">
+            <option value="">Todos los restaurantes</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <select class="form-select" id="itemsPorPaginaReservacion">
+            <option value="10">10 por página</option>
+            <option value="25">25 por página</option>
+            <option value="50">50 por página</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-3">
+          <select class="form-select" id="filtroEstadoReservacion">
+            <option value="">Todos los estados</option>
+          </select>
+        </div>
+      </div>
+
+
+      <!-- Tabla de reservaciones actualizada -->
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover align-middle" id="tablaReservaciones" aria-label="dynamic reservations table">
+          <thead class="table-dark">
+            <tr>
+              <th>ID</th>
+              <th># Personas</th>
+              <th>Fecha</th>
+              <th>Hora Inicio</th>
+              <th>Hora Fin</th>
+              <th>Usuario</th>
+              <th>Estado</th>
+              <th>Restaurante</th>
+              <th>Sucursal</th>
+              <th>Mesa</th>
+              <th>Anotaciones</th>
+              <th>Creado</th>
+              <th>Actualizado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="reservacionTableBody">
+            <!-- Contenido generado dinámicamente -->
+          </tbody>
+        </table>
+        <div id="paginacionReservaciones" class="mt-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal único para agregar/editar Reservación -->
+  <div class="modal fade" id="modalReservacion" tabindex="-1" aria-labelledby="modalTituloReservacion" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <form id="formReservacion" class="needs-validation" novalidate>
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTituloReservacion">Agregar Reservación</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+
+          <div class="modal-body">
+            <input type="hidden" id="id_reservacion" />
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="numero_personas" class="form-label">Número de Personas</label>
+                <input type="number" class="form-control" id="numero_personas" name="numero_personas" min="1" max="20" required>
+                <div class="invalid-feedback">Ingrese un número válido de personas (1-20)</div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="fecha" class="form-label">Fecha</label>
+                <input type="date" class="form-control" id="fecha" name="fecha" required>
+                <div class="invalid-feedback">Seleccione una fecha válida</div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="hora_inicio" class="form-label">Hora Inicio</label>
+                <input type="time" class="form-control" id="hora_inicio" name="hora_inicio" required>
+                <div class="invalid-feedback">Seleccione una hora de inicio</div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="hora_fin" class="form-label">Hora Fin</label>
+                <input type="time" class="form-control" id="hora_fin" name="hora_fin" required>
+                <div class="invalid-feedback">Seleccione una hora de fin</div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="usuario_fk" class="form-label">Usuario</label>
+                <select class="form-select" id="usuario_fk" name="usuario_fk" required>
+                  <option value="">Seleccione un usuario</option>
+                </select>
+                <div class="invalid-feedback">Seleccione un usuario</div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="estado_reservacion" class="form-label">Estado</label>
+                <select class="form-select" id="estado_reservacion" name="estado_reservacion" required>
+                  <option value="1">Pendiente</option>
+                  <option value="2">Confirmada</option>
+                  <option value="3">Cancelada</option>
+                </select>
+                <div class="invalid-feedback">Seleccione un estado</div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="restaurante_fk" class="form-label">Restaurante</label>
+                <select class="form-select" id="restaurante_fk" name="restaurante_fk" required>
+                  <option value="">Seleccione un restaurante</option>
+                </select>
+                <div class="invalid-feedback">Seleccione un restaurante</div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="sucursal_fk" class="form-label">Sucursal</label>
+                <select class="form-select" id="sucursal_fk" name="sucursal_fk" required disabled>
+                  <option value="">Primero seleccione un restaurante</option>
+                </select>
+                <div class="invalid-feedback">Seleccione una sucursal</div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="mesa_fk" class="form-label">Mesa</label>
+                <select class="form-select" id="mesa_fk" name="mesa_fk" required disabled>
+                  <option value="">Primero seleccione una sucursal</option>
+                </select>
+                <div class="invalid-feedback">Seleccione una mesa</div>
+              </div>
+
+              <div class="col-md-12 mb-3">
+                <label for="anotaciones" class="form-label">Anotaciones</label>
+                <textarea class="form-control" id="anotaciones" name="anotaciones" rows="3" maxlength="500"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">
+              <i class="fas fa-save me-2"></i> Guardar
+            </button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts actualizados -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="module" src="../public/assets/js/reservacionPanel.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderSidebar('sidebar-container');
+      
+      // Ocultar preload
+      setTimeout(() => {
+        document.getElementById('preloadId').style.opacity = '0';
+        document.getElementById('preloadId').style.visibility = 'hidden';
+      }, 500);
+    });
+  </script>
+</body>
+</html>

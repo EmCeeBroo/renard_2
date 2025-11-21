@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/jpeg" href="../public/assets/img/renard.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../public/assets/css/usuarioPanel.css" />
+  <title>Gestión de Menús - Administrador</title>
+  <script src="../sidebar/sidebar.js" defer></script>
+</head>
+
+<body>
+  <!--Preload-->
+  <div class="preload" id="preloadId" style="display: flex;">
+    <div class="preload-spinner"></div>
+    <h3 class="mt-3">Cargando...</h3>
+  </div>
+  <!--End Preload-->
+
+  <!-- Sidebar -->
+  <div id="sidebar-container"></div>
+
+  <!-- Main Content -->
+  <div class="admin-content" style="display:none;" id="mainContent">
+    <div class="admin-header">
+      <h2><i class="bi bi-journal-text"></i> Gestión de Menús</h2>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin/dashboard">Inicio</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Menús</li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="admin-card fade-in">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h5 class="mb-0">Listado de Menús</h5>
+        <button class="btn btn-primary-custom" data-bs-toggle="modal" data-bs-target="#createMenuModal">
+          <i class="fas fa-plus me-2"></i> Agregar Menú
+        </button>
+      </div>
+
+      <!-- Filtros y búsqueda -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-search"></i></span>
+            <input type="text" class="form-control" id="buscarInput" placeholder="Buscar por nombre o descripción" />
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover align-middle text-center" id="menusTable" aria-label="dynamic menu table">
+          <thead class="table-dark">
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Restaurante</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Contenido generado dinámicamente -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para crear menú -->
+  <div class="modal fade" id="createMenuModal" tabindex="-1" aria-labelledby="createMenuModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="createMenuForm">
+          <div class="modal-header">
+            <h5 class="modal-title" id="createMenuModalLabel">Crear Menú</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="createNombre" class="form-label">Nombre del Menú</label>
+              <input
+                type="text"
+                class="form-control"
+                id="createNombre"
+                required
+                placeholder="Ej: Menú del día, Menú ejecutivo"
+              />
+              <div class="invalid-feedback">Por favor ingrese el nombre del menú.</div>
+            </div>
+            <div class="mb-3">
+              <label for="createRestaurante" class="form-label">Restaurante</label>
+              <select class="form-select" id="createRestaurante" required>
+                <option value="">Seleccione un restaurante</option>
+              </select>
+              <div class="invalid-feedback">Por favor seleccione un restaurante.</div>
+            </div>
+            <div class="mb-3">
+              <label for="createDescripcion" class="form-label">Descripción</label>
+              <textarea
+                class="form-control"
+                id="createDescripcion"
+                rows="3"
+                placeholder="Descripción del menú (opcional)"
+              ></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary-custom">
+              <i class="fas fa-plus-circle me-2"></i> Crear Menú
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para editar menú -->
+  <div class="modal fade" id="modalEditarMenu" tabindex="-1" aria-labelledby="modalEditarMenuLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="formEditarMenu">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalEditarMenuLabel">Editar Menú</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="editIdMenu" />
+          <div class="mb-3">
+            <label for="editNombre" class="form-label">Nombre del Menú</label>
+            <input type="text" class="form-control" id="editNombre" required />
+            <div class="invalid-feedback">Por favor ingrese el nombre del menú.</div>
+          </div>
+          <div class="mb-3">
+            <label for="editRestaurante" class="form-label">Restaurante</label>
+            <select class="form-select" id="editRestaurante" required>
+              <option value="">Seleccione un restaurante</option>
+            </select>
+            <div class="invalid-feedback">Por favor seleccione un restaurante.</div>
+          </div>
+          <div class="mb-3">
+            <label for="editDescripcion" class="form-label">Descripción</label>
+            <textarea class="form-control" id="editDescripcion" rows="3"></textarea>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary-custom">
+              <i class="fas fa-save me-2"></i> Guardar Cambios
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="module" src="../public/assets/js/menu.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderSidebar('sidebar-container');
+      // Mostrar contenido principal y ocultar preload cuando esté listo
+      const preload = document.getElementById('preloadId');
+      const mainContent = document.getElementById('mainContent');
+      if (preload && mainContent) {
+        preload.style.display = 'none';
+        mainContent.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

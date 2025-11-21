@@ -1,0 +1,360 @@
+/* ====== ESTILOS VISTA RESTAURANTE ====== */
+
+:root {
+  --primary-color: #ff6600; /* Naranja principal */
+  --dark-color: #222;
+  --light-color: #fff;
+  --gray-color: #f4f4f4;
+}
+
+/* Contenedor principal */
+.restaurante-page {
+  font-family: 'Poppins', sans-serif;
+  color: var(--dark-color);
+  line-height: 1.6;
+}
+
+/* Hero con imagen */
+.restaurante-hero {
+  position: relative;
+  background: url('../img/restaurantespng/fondo.png') no-repeat center center/cover;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.restaurante-hero2 {
+  position: relative;
+  background: url('../img/restaurantespng/fondo2.png') no-repeat center center/cover;
+  height: 60vh;
+  width: 80%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.restaurante-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(105, 95, 95, 0.5);
+}
+
+.restaurante-hero h1 {
+  position: relative;
+  color: var(--light-color);
+  font-size: 5rem;
+  font-weight: 700;
+  text-align: center;
+  z-index: 2;
+}
+
+.restaurante-hero p {
+  position: relative;
+  color: var(--light-color);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 10px;
+  text-align: center;
+  z-index: 2;
+}
+
+/* Sección de descripción */
+.restaurante-descripcion {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: var(--gray-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.restaurante-descripcion h2 {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.restaurante-descripcion p {
+  font-size: 1rem;
+  color: #444;
+  text-align: justify;
+}
+
+/* Mapa */
+.restaurante-mapa {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.restaurante-mapa h2 {
+  color: var(--primary-color);
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+#map {
+  width: 100%;
+  height: 400px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .restaurante-hero {
+    height: 40vh;
+  }
+
+  .restaurante-hero h1 {
+    font-size: 2rem;
+  }
+
+  .restaurante-descripcion {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+}
+
+
+
+/* ===== Estilo Botón QR ===== */
+.btn-qr {
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.btn-qr:hover {
+  background: linear-gradient(135deg, #ff512f, #dd2476);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+
+.btn-qr:active {
+  transform: scale(0.97);
+}
+
+/* ===== Contenedor QR ===== */
+/* ===== Estilo Botón QR ===== */
+.btn-qr {
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px; /* 🔥 Hace el botón redondo */
+  padding: 12px 28px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+
+/* ===== Contenedor QR ===== */
+#qrContainer {
+  margin-top: 5px;
+  padding: 5px;
+  padding-bottom: 25px;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  display: none;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+  width: center;
+  max-width: 50%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+
+  /* 🔥 Centramos el contenedor */
+  /*display: flex;*/
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#qrContainer h3 {
+  margin-bottom: 15px;
+  color: #333;
+  font-weight: bold;
+}
+
+#qrcode {
+  display: flex;
+  justify-content: center; /* 🔥 Centra el QR */
+  align-items: center;
+}
+
+#qrcode canvas {
+  border: 6px solid #f1f1f1;
+  border-radius: 12px;
+  padding: 12px;
+  background: #fff;
+}
+
+/* Animación suave */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.btn-qr i {
+  font-size: 28px;
+}
+
+/* ===== ESTILOS PARA LA SECCIÓN DE PLATOS ===== */
+
+/* Sección principal de platos */
+.restaurante-platos {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: var(--gray-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.restaurante-platos h2 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Contenedor de platos - Grid responsivo */
+.dishes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+/* Cada plato individual */
+.plato-item {
+  background: var(--light-color);
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 102, 0, 0.1);
+}
+
+.plato-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  border-color: var(--primary-color);
+}
+
+/* Información del plato */
+.plato-item h3 {
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.plato-item p {
+  color: #666;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.plato-item p strong {
+  color: var(--dark-color);
+}
+
+/* Estilos para las imágenes de los platos */
+.plato-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 1rem 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.plato-img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Precio del plato */
+.plato-item p:last-of-type {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Responsive Design para platos */
+@media (max-width: 768px) {
+  .restaurante-platos {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+
+  .dishes-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .plato-item {
+    padding: 1rem;
+  }
+
+  .plato-img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dishes-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .plato-img {
+    height: 160px;
+  }
+
+  .restaurante-platos h2 {
+    font-size: 1.6rem;
+  }
+}
+
+/* Estado cuando no hay platos */
+.dishes-container:empty::after {
+  content: "No hay platos disponibles para este restaurante.";
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  border: 2px dashed #ddd;
+}

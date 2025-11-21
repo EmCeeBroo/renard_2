@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inicio - Renard</title>
+  <link rel="stylesheet" href="../public/assets/css/inicio.css" />
+  <script src="../public/assets/js/inicio.js" defer></script>
+</head>
+<body>
+  <div id="sidebar-container"></div>
+  <div class="background">
+    <header class="header">
+      <img src="../public/assets/img/renard.png.png" alt="Renard Logo" class="logo">
+      <nav class="nav">
+        <a href="#">Inicio</a>
+        <a href="#">Reservas</a>
+        <a href="#">Menú</a>
+        <a href="#">Restaurantes</a>
+        <a href="../usuarioPanel/usuarioPanel.html">Usuarios</a>
+        <button class="logout-btn">Cerrar sesión</button>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <h1>¡Bienvenido a Renard!</h1>
+      <p>Administra tus restaurantes, gestiona tus reservas y mantén todo bajo control desde una sola plataforma.</p>
+      <a href="#" class="primary-btn">Ir al Panel</a>
+    </main>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderSidebar('sidebar-container');
+    });
+  </script>
+</body>
+</html>

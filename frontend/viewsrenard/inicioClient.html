@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bienvenido - RENARD</title>
+  <link rel="stylesheet" href="../public/assets/css/inicioRenard.css" />
+  <link rel="stylesheet" href="../public/assets/css/navbar.css" />
+  <link rel="stylesheet" href="../public/assets/css/theme.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <!-- Sección de bienvenida -->
+  <section class="welcome-hero">
+    <h1>¡Bienvenido a RENARD!</h1>
+    <p>Tu plataforma de reservas favorita. Descubre restaurantes increíbles y vive experiencias gastronómicas únicas.</p>
+    <div class="user-greeting" id="userGreeting">
+      <i class='bx bx-user'></i> Hola, Usuario
+    </div>
+  </section>
+
+  <!-- Información adicional con tarjetas informativas -->
+  <section class="info-cards">
+    <div class="container">
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-icon">
+            <i class='bx bx-time'></i>
+          </div>
+          <h3>Reserva 24/7</h3>
+          <p>Haz tus reservas en cualquier momento, desde cualquier lugar.</p>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">
+            <i class="bi bi-shield-check"></i>
+          </div>
+          <h3>Seguro y Confiable</h3>
+          <p>Tus datos están protegidos y tus reservas garantizadas.</p>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">
+            <i class='bx bx-star'></i>
+          </div>
+          <h3>Mejores Restaurantes</h3>
+          <p>Accede a una selección exclusiva de los mejores lugares.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de reservas recientes -->
+  <section class="recent-section">
+    <h2><i class='bx bx-history'></i> Mis Últimas Reservas</h2>
+    <div id="recentReservations">
+      <div class="empty-state">
+        <i class='bx bx-calendar-x'></i>
+        <h3>No tienes reservas recientes</h3>
+        <p>¡Haz tu primera reserva y comienza a disfrutar de increíbles experiencias gastronómicas!</p>
+        <br>
+        <a href="./restaurante.html" class="btn-primary">Hacer Primera Reserva</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer con información de la plataforma -->
+  <section class="footer-info">
+    <img src="../public/assets/img/renard.png" alt="RENARD Logo" width="80" />
+    <h3>RENARD - Tu plataforma de reservas</h3>
+    <p>TEAM RENARD. Todos los derechos reservados. © 2025.</p>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Scripts -->
+  <script src="../public/assets/js/inicioRenard.js"></script>
+  <script src="../viewsrenard/navbar.js"></script>
+</body>
+</html>

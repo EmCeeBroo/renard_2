@@ -1,0 +1,352 @@
+/* recuperar.css */
+
+/* ===== VARIABLES ===== */
+:root {
+    --primary-color: #FF5A00;
+    --primary-hover: #FF8C38;
+    --success-color: #28a745;
+    --error-color: #dc3545;
+    --warning-color: #ffc107;
+    --gray-light: #f8f9fa;
+    --gray-medium: #6c757d;
+    --gray-dark: #333;
+}
+
+/* ===== GENERAL ===== */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--dark);
+    /* Updated background with soft orange gradient */
+    background: linear-gradient(135deg, #FF8C38 0%, #FFDAC1 50%, #FF8C38 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
+
+/* Add subtle pattern overlay */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.2' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+    position: relative;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background: white;
+    position: relative;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+/* ===== ENCABEZADO ===== */
+.text-center h1 {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.text-center h3 {
+    font-weight: 600;
+    color: var(--gray-dark);
+    margin-bottom: 10px;
+}
+
+.text-center p.text-muted {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+/* ===== LOADING OVERLAY ===== */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    border-radius: 15px;
+}
+
+.loading-spinner {
+    text-align: center;
+    padding: 20px;
+}
+
+.loading-spinner p {
+    margin-top: 15px;
+    font-weight: 500;
+    color: var(--gray-medium);
+}
+
+/* ===== MENSAJES ===== */
+.error-message,
+.success-message {
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: none;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+.success-message {
+    background-color: #d1edff;
+    border: 1px solid #bee5eb;
+    color: #0c5460;
+}
+
+/* ===== FORMULARIO ===== */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--gray-dark);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(255, 102, 0, 0.25);
+}
+
+.form-control.is-valid {
+    border-color: var(--success-color);
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.form-control.is-invalid {
+    border-color: var(--error-color);
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* ===== INDICADOR DE COINCIDENCIA DE CONTRASEÑAS ===== */
+.password-match-indicator {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-top: 8px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+.password-match-indicator.text-success {
+    background-color: #d1edff;
+    border: 1px solid #bee5eb;
+}
+
+.password-match-indicator.text-danger {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+/* ===== REQUISITOS DE SEGURIDAD ===== */
+.security-requirements {
+    background-color: var(--gray-light);
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.security-requirements h6 {
+    font-weight: 600;
+    color: var(--gray-dark);
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.requirement {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    font-size: 0.9rem;
+    color: var(--error-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.requirement.valid {
+    color: var(--success-color);
+}
+
+.requirement-icon {
+    width: 20px;
+    margin-right: 10px;
+    font-size: 0.9rem;
+}
+
+/* ===== BOTONES ===== */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+    color: white;
+    border: 2px solid transparent;
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 102, 0, 0.3);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.btn.w-100 {
+    width: 100%;
+}
+
+/* ===== ENLACES ===== */
+.text-center a {
+    color: var(--gray-medium);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.text-center a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+    }
+    
+    .text-center h1 {
+        font-size: 1.8rem;
+    }
+    
+    .text-center h3 {
+        font-size: 1.3rem;
+    }
+    
+    .security-requirements {
+        padding: 15px;
+    }
+    
+    .requirement {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .text-center h1 {
+        font-size: 1.5rem;
+    }
+    
+    .text-center h3 {
+        font-size: 1.1rem;
+    }
+    
+    .form-control {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.requirement {
+    transition: all 0.3s ease;
+}
+
+.requirement.valid {
+    transform: scale(1.02);
+}
+
+/* ===== SPINNER DE BOOTSTRAP ===== */
+.spinner-border {
+    width: 2rem;
+    height: 2rem;
+}
+
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+}

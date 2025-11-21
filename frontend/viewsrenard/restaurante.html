@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vista Restaurante</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../public/assets/css/inicioRenard.css" />
+  <link rel="stylesheet" href="../public/assets/css/restaurantes.css">
+  <link rel="stylesheet" href="../public/assets/css/navbar.css">
+  <link rel="stylesheet" href="../public/assets/css/theme.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body style="background-color: #ffe2d1;">
+  <!-- Navbar container for top menu -->
+  <div id="navbar-container"></div>
+
+  <div class="restaurante-page" id="hero-section">
+
+    <!-- HERO CON IMAGEN DEL RESTAURANTE -->
+    <section class="restaurante-hero" >
+      <div>
+        <h1 id="nombre">Nombre del Restaurante</h1>
+        <p id="eslogan">Categoría o slogan</p>
+      </div>
+    </section>
+
+    <!-- DESCRIPCIÓN -->
+    <section class="restaurante-descripcion">
+      <h2>Sobre Nosotros</h2>
+      <p id="descripcion">
+        Aquí va la descripción cargada desde la base de datos.
+      </p>
+      <button id="btnQr" class="btn-qr">
+        <i class="bi bi-qr-code-scan"></i>
+        Menú QR
+      </button>
+    </section>
+
+    <!-- Contenedor QR oculto -->
+    <div id="qrContainer" style="display:none; text-align:center; margin-top:10px;">
+      <h3>Escanea el código QR</h3>
+      <div id="qrcode"></div>
+    </div>
+
+    <!-- MAPA -->
+    <section class="restaurante-mapa">
+      <h2>Ubicación</h2>
+      <div id="map" style="height: 400px; width: 100%;"></div>
+    </section>
+
+    <!-- NUEVA SECCIÓN PARA PLATOS -->
+    <section class="restaurante-platos">
+      <h2>Platos  Favoritos</h2>
+      <div id="dishes-container" class="dishes-container">
+        <!-- Platos se cargarán aquí dinámicamente -->
+      </div>
+    </section>
+
+  </div>
+
+  <!-- HERO CON IMAGEN DEL RESTAURANTE -->
+    <section class="restaurante-hero2" id="hero-section2">
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Navbar script -->
+  <script src="../viewsrenard/navbar.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderNavbar("navbar-container");
+    });
+  </script>
+
+  <!-- Tu JS dinámico -->
+  <script src="../public/assets/js/restaurante.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+</body>
+</html>

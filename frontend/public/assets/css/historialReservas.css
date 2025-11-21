@@ -1,0 +1,536 @@
+/* Variables para colores del sitio */
+:root {
+  --primary: #fd7e14; /* Naranja principal */
+  --secondary: #ff7f50; /* Naranja secundario */
+  --bg-color: #ffe2d1; /* Color de fondo claro */
+  --text-color: #333; /* Color de texto oscuro */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body, html {
+  height: 100%;
+  background: var(--bg-color); /* Usando variable */
+  min-height: 100vh;
+  color: var(--text-color); /* Usando variable */
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header de la página */
+.page-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  padding: 60px 0 40px;
+  text-align: center;
+  position: relative;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.page-header > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.page-header h1 i {
+  margin-right: 15px;
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Sección de filtros */
+.filters-section {
+  background: white;
+  padding: 30px 0;
+  box-shadow: 0 2px 10px rgba(253, 126, 20, 0.1);
+  border-bottom: 1px solid rgba(253, 126, 20, 0.1);
+}
+
+.filters-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: end;
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.filter-item label {
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 0.9rem;
+}
+
+.filter-item select {
+  padding: 10px 15px;
+  border: 2px solid rgba(253, 126, 20, 0.3);
+  border-radius: 8px;
+  background: white;
+  color: var(--text-color);
+  font-size: 1rem;
+  min-width: 150px;
+  transition: all 0.3s ease;
+}
+
+.filter-item select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 10px rgba(253, 126, 20, 0.2);
+}
+
+.btn-refresh {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-refresh:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(253, 126, 20, 0.3);
+}
+
+/* Sección principal de reservas */
+.reservas-section {
+  padding: 40px 0 60px;
+  flex-grow: 1;
+}
+
+.reservas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 400px));
+  gap: 25px;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+/* Tarjeta de reserva */
+.reserva-card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 400px;
+  min-width: 320px;
+  box-shadow: 0 8px 25px rgba(253, 126, 20, 0.1);
+  border: 1px solid rgba(253, 126, 20, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  border-left: 5px solid #e0e0e0; /* Border por defecto */
+}
+
+.reserva-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(253, 126, 20, 0.2);
+}
+
+/* Bordes coloridos según estado */
+.reserva-card[data-estado="pendiente"] {
+  border-left-color: #ffc107;
+}
+
+.reserva-card[data-estado="confirmada"] {
+  border-left-color: #28a745;
+}
+
+.reserva-card[data-estado="completada"] {
+  border-left-color: #007bff;
+}
+
+.reserva-card[data-estado="cancelada"] {
+  border-left-color: #6c757d;
+}
+
+.reserva-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.reserva-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.reserva-title {
+  font-size: 1.2rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin: 0;
+}
+
+.reserva-id {
+  font-size: 0.8rem;
+  color: #666;
+  background: #f8f9fa;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.reserva-info {
+  display: grid;
+  gap: 10px;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+
+.info-row i {
+  color: var(--primary);
+  width: 18px;
+  text-align: center;
+}
+
+.info-row strong {
+  color: var(--text-color);
+  min-width: 70px;
+}
+
+.info-row span {
+  flex: 1;
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Acciones - ACTUALIZADO */
+.reserva-actions {
+  margin-top: 15px;
+  padding-top: 15px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.btn-action {
+  flex: 1;
+  min-width: 110px;
+  max-width: 140px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  text-align: center;
+}
+
+.btn-detalle {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-cancelar {
+  background: #dc3545;
+  color: white;
+}
+
+/* NUEVO: Botón Confirmar */
+.btn-confirmar {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  border: none;
+}
+
+.btn-confirmar:hover {
+  background: linear-gradient(135deg, #218838, #1ba085);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.btn-confirmar:active {
+  transform: translateY(0);
+}
+
+.btn-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Estados de reserva - ACTUALIZADOS */
+.estado-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.estado-pendiente {
+  background: linear-gradient(135deg, #ffc107, #e0a800);
+  color: #212529;
+  animation: pulse-pending 2s infinite;
+  box-shadow: 0 2px 4px rgba(255, 193, 7, 0.3);
+}
+
+.estado-confirmada {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+}
+
+.estado-completada {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+}
+
+.estado-cancelada {
+  background: linear-gradient(135deg, #6c757d, #545b62);
+  color: white;
+  box-shadow: 0 2px 4px rgba(108, 117, 125, 0.3);
+}
+
+/* Animación para reservas pendientes */
+@keyframes pulse-pending {
+  0% { 
+    box-shadow: 0 2px 4px rgba(255, 193, 7, 0.3), 0 0 0 0 rgba(255, 193, 7, 0.7); 
+  }
+  70% { 
+    box-shadow: 0 2px 4px rgba(255, 193, 7, 0.3), 0 0 0 10px rgba(255, 193, 7, 0); 
+  }
+  100% { 
+    box-shadow: 0 2px 4px rgba(255, 193, 7, 0.3), 0 0 0 0 rgba(255, 193, 7, 0); 
+  }
+}
+
+/* Estados vacíos y loading */
+.loading-state, .empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.loading-state i, .empty-state i {
+  font-size: 3rem;
+  color: var(--primary);
+  margin-bottom: 20px;
+  opacity: 0.6;
+}
+
+.loading-state i {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.empty-state h3 {
+  color: var(--primary);
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+/* Sección de volver */
+.back-section {
+  padding: 40px 0;
+  text-align: center;
+  background: white;
+  border-top: 1px solid rgba(253, 126, 20, 0.1);
+}
+
+.btn-secondary {
+  background: rgba(253, 126, 20, 0.1);
+  color: var(--primary);
+  padding: 12px 25px;
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-secondary:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Modal - MEJORADO */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: white;
+  margin: 5% auto;
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #dc3545;
+}
+
+/* Footer RENARD */
+.footer-info {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  text-align: center;
+  padding: 40px 20px;
+  color: white;
+  position: relative;
+  margin-top: auto;
+}
+
+.footer-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.footer-info > * {
+  position: relative;
+  z-index: 1;
+}
+
+.footer-info img {
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.footer-info h3 {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  color: white;
+}
+
+.footer-info p {
+  opacity: 0.9;
+  max-width: 400px;
+  margin: 0 auto;
+  color: white;
+}
+
+/* Responsive - ACTUALIZADO */
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .filters-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-item {
+    width: 100%;
+  }
+
+  .reservas-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .reserva-card {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  /* Responsive para botones en móvil */
+  .reserva-actions {
+    flex-direction: column;
+  }
+  
+  .reserva-actions .btn-action {
+    width: 100%;
+    max-width: none;
+    margin-bottom: 5px;
+    justify-content: center;
+  }
+}

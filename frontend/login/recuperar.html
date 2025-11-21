@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restablecer Contraseña - RENARD</title>
+    <!-- Puedes agregar Bootstrap si no está incluido en recuperar.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/assets/css/recuperar.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Encabezado -->
+                        <div class="text-center mb-4">
+                            <h1 style="color: #ff6600;">RENARD TEAM</h1>
+                            <h3>Restablecer contraseña</h3>
+                            <p class="text-muted">Crea una nueva contraseña segura</p>
+                        </div>
+
+                        <!-- Capa de carga -->
+                        <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+                            <div class="loading-spinner text-center">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Cargando...</span>
+                                </div>
+                                <p class="mt-2">Procesando...</p>
+                            </div>
+                        </div>
+
+                        <!-- Mensajes -->
+                        <div class="error-message text-danger" id="errorMessage"></div>
+                        <div class="success-message text-success" id="successMessage"></div>
+
+                        <!-- Formulario -->
+                        <form id="reset-form">
+                            <div class="form-group mb-3">
+                                <label for="nuevaContrasena">Nueva contraseña</label>
+                                <input type="password"
+                                       id="nuevaContrasena"
+                                       placeholder="Ingresa tu nueva contraseña"
+                                       class="form-control"
+                                       required>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="confirmarContrasena">Confirmar contraseña</label>
+                                <input type="password"
+                                       id="confirmarContrasena"
+                                       placeholder="Confirma tu nueva contraseña"
+                                       class="form-control"
+                                       required>
+                                <div class="password-match-indicator" id="passwordMatchIndicator"></div>
+                            </div>
+
+                            <!-- Requisitos de seguridad -->
+                            <div class="security-requirements mb-3">
+                                <h6>Requisitos de seguridad:</h6>
+                                <div class="requirement" id="req-length">
+                                    <span class="requirement-icon">❌</span> Al menos 8 caracteres
+                                </div>
+                                <div class="requirement" id="req-uppercase">
+                                    <span class="requirement-icon">❌</span> Una letra mayúscula (A-Z)
+                                </div>
+                                <div class="requirement" id="req-lowercase">
+                                    <span class="requirement-icon">❌</span> Una letra minúscula (a-z)
+                                </div>
+                                <div class="requirement" id="req-number">
+                                    <span class="requirement-icon">❌</span> Un número (0-9)
+                                </div>
+                                <div class="requirement" id="req-special">
+                                    <span class="requirement-icon">❌</span> Un carácter especial (!@#$%^&*(),.?":{}|<>)
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary w-100 mt-3" type="submit" id="submitBtn" disabled>
+                                Actualizar contraseña
+                            </button>
+                        </form>
+
+                        <!-- Enlace de regreso -->
+                        <div class="text-center mt-3">
+                            <a href="../login//login.html" class="text-muted">Volver al inicio de sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts opcionales -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+    <!--JS data Tables-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script type="module" src="../public/assets/js/recuperar.js"></script>
+</body>
+</html>

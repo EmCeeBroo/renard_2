@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Restaurantes - RENARD</title>
+    <link rel="icon" type="image/png" href="../public/assets/img/renard.png">
+    <link rel="stylesheet" href="../public/assets/css/restaurantesRenard.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
+    <link rel="stylesheet" href="../public/assets/css/navbar.css" />
+    <link rel="stylesheet" href="../public/assets/css/theme.css" />
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <main class="galeria-restaurantes">
+        <h1 class="titulo-galeria" id="titulo-galeria">Nuestros Restaurantes</h1>
+        <section class="grid-restaurantes">
+            <!-- Contenedores dinámicos se insertarán aquí -->
+        </section>
+    </main>
+
+    <!-- Footer con información de la plataforma -->
+    <section class="footer-info">
+        <img src="../public/assets/img/renard.png" alt="RENARD Logo" width="80" />
+        <h3>RENARD - Tu plataforma de reservas</h3>
+        <p>TEAM RENARD. Todos los derechos reservados. © 2025.</p>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../public/assets/js/restaurantesRenard.js"></script>
+    <script src="../viewsrenard/navbar.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderNavbar('navbar-container');
+        });
+    </script>
+</body>
+</html>

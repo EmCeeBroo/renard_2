@@ -1,0 +1,89 @@
+/* ====== MODO OSCURO GLOBAL ====== */
+body.dark-theme {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+/* Ajustar contenedores principales */
+body.dark-theme section,
+body.dark-theme main,
+body.dark-theme .contenedor,
+body.dark-theme .card,
+body.dark-theme .card-body {
+  background-color: #1e1e1e !important;
+  color: #070707 !important;
+  border-color: rgba(255,255,255,0.1);
+}
+
+
+/* Tema oscuro */
+body.dark-theme .user-dropdown a,
+body.dark-theme .user-dropdown i {
+  color: rgb(10, 10, 10);
+}
+
+body.dark-theme .restaurante-descripcion p {
+  color: rgb(255, 255, 255);
+}
+
+body.dark-theme .restaurante-hero h1 {
+  color: rgb(255, 255, 255);
+}
+
+/* Botones y enlaces */
+body.dark-theme a {
+  color: #ff9f43;
+}
+
+body.dark-theme a:hover {
+  color: #ffa94d;
+}
+
+body.dark-theme button {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+body.dark-theme button:hover {
+  background-color: #333;
+}
+
+.user-dropdown-menu a:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #fd7e14;
+}
+
+#titulo-galeria{
+    color: #f0f0f0;
+}
+
+
+/* Cards o bloques claros */
+body.dark-theme .card {
+  background-color: #1e1e1e;
+  color: #ff9f43;
+  box-shadow: 0 0 10px rgba(255,255,255,0.05);
+}
+
+/* Encabezados o títulos */
+body.dark-theme h1, 
+body.dark-theme h3, 
+body.dark-theme h4 {
+  color: #161615;
+}
+
+body.dark-theme h2 {
+    color: #fbfbfb;
+}
+
+/* Navbar y pie */
+body.dark-theme .nav-bar {
+  background: linear-gradient(90deg, #222, #333);
+  box-shadow: 0px 3px 15px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme footer {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}

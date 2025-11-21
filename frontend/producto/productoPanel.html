@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/jpeg" href="../public/assets/img/renard.png.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <title>Panel de Productos - Administrador</title>
+  <link rel="stylesheet" href="../public/assets/css/style.css" />
+  <script src="../sidebar/sidebar.js" defer></script>
+</head>
+<body>
+    <div id="sidebar-container"></div>
+
+    <div class="admin-content">
+        <div class="admin-header">
+            <h2><i class="bi bi-box-seam"></i> Panel de Productos</h2>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin/dashboard">Inicio</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Productos</li>
+                </ol>
+            </nav>
+        </div>
+
+        <div class="admin-card fade-in">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="mb-0">Listado de productos</h5>
+                <button class="btn btn-primary-custom" id="btnAgregar" type="button" data-bs-toggle="modal" data-bs-target="#createProductoModal">
+                    <i class="fas fa-plus me-2"></i> Crear Producto
+                </button>
+            </div>
+
+            <!-- Filtros -->
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                        <input type="text" class="form-control" id="buscarProducto" placeholder="Buscar por nombre..." />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-funnel"></i></span>
+                        <select class="form-select" id="filtroCategoria">
+                            <option value="">Todas las categorías</option>
+                            <!-- Se llenará dinámicamente -->
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-menu-button"></i></span>
+                        <select class="form-select" id="filtroMenu">
+                            <option value="">Todos los menús</option>
+                            <!-- Se llenará dinámicamente -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover align-middle text-center" id="tablaProductos" aria-label="dynamic table by producto">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Descripción</th>
+                            <th>Menú</th>
+                            <th>Categoría</th>
+                            <th>Imagen</th>
+                            <th>Creado</th>
+                            <th>Actualizado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productoTableBody">
+                        <!-- Las filas se cargarán dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Crear Producto -->
+    <div class="modal fade" id="createProductoModal" tabindex="-1" aria-labelledby="createProductoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="createProductoForm" class="modal-content needs-validation" novalidate enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createProductoModalLabel">Crear Nuevo Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="createNombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="createNombre" required />
+                        <div class="invalid-feedback">Por favor ingrese el nombre.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="createPrecio" class="form-label">Precio</label>
+                        <input type="number" step="0.01" class="form-control" id="createPrecio" required />
+                        <div class="invalid-feedback">Por favor ingrese el precio.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="createDescripcion" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="createDescripcion" rows="3" required></textarea>
+                        <div class="invalid-feedback">Por favor ingrese la descripción.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="createMenu" class="form-label">Menú</label>
+                        <select class="form-select" id="createMenu" required>
+                            <option value="">Seleccione un menú</option>
+                            <!-- Se llenará dinámicamente -->
+                        </select>
+                        <div class="invalid-feedback">Por favor seleccione un menú.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="createCategoria" class="form-label">Categoría</label>
+                        <select class="form-select" id="createCategoria" required>
+                            <option value="">Seleccione una categoría</option>
+                            <!-- Se llenará dinámicamente -->
+                        </select>
+                        <div class="invalid-feedback">Por favor seleccione una categoría.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="createImagen" class="form-label">Imagen</label>
+                        <input type="file" class="form-control" id="createImagen" accept="image/*" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary-custom">Crear</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Editar Producto -->
+    <div class="modal fade" id="editProductoModal" tabindex="-1" aria-labelledby="editProductoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="editProductoForm" class="modal-content needs-validation" novalidate enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProductoModalLabel">Editar Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="editProductoId" />
+                    <div class="mb-3">
+                        <label for="editNombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="editNombre" required />
+                        <div class="invalid-feedback">Por favor ingrese el nombre.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editPrecio" class="form-label">Precio</label>
+                        <input type="number" step="0.01" class="form-control" id="editPrecio" required />
+                        <div class="invalid-feedback">Por favor ingrese el precio.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editDescripcion" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="editDescripcion" rows="3" required></textarea>
+                        <div class="invalid-feedback">Por favor ingrese la descripción.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editMenu" class="form-label">Menú</label>
+                        <select class="form-select" id="editMenu" required>
+                            <option value="">Seleccione un menú</option>
+                            <!-- Se llenará dinámicamente -->
+                        </select>
+                        <div class="invalid-feedback">Por favor seleccione un menú.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editCategoria" class="form-label">Categoría</label>
+                        <select class="form-select" id="editCategoria" required>
+                            <option value="">Seleccione una categoría</option>
+                            <!-- Se llenará dinámicamente -->
+                        </select>
+                        <div class="invalid-feedback">Por favor seleccione una categoría.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editImagen" class="form-label">Imagen</label>
+                        <input type="file" class="form-control" id="editImagen" accept="image/*" />
+                        <small class="text-muted">Deja vacío para mantener la imagen actual.</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary-custom">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Ver Detalles Producto -->
+    <div class="modal fade" id="viewProductoModal" tabindex="-1" aria-labelledby="viewProductoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewProductoModalLabel">Detalles del Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>ID:</strong> <span id="viewId"></span></p>
+                    <p><strong>Nombre:</strong> <span id="viewNombre"></span></p>
+                    <p><strong>Precio:</strong> <span id="viewPrecio"></span></p>
+                    <p><strong>Descripción:</strong> <span id="viewDescripcion"></span></p>
+                    <p><strong>Menú:</strong> <span id="viewMenu"></span></p>
+                    <p><strong>Categoría:</strong> <span id="viewCategoria"></span></p>
+                    <p><strong>Imagen:</strong></p>
+                    <img id="viewImagen" src=""  class="img-fluid" style="max-width: 200px;" alt="product"/>
+                    <p><strong>Creado:</strong> <span id="viewCreatedAt"></span></p>
+                    <p><strong>Actualizado:</strong> <span id="viewUpdatedAt"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../public/assets/js/productoPanel.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSidebar('sidebar-container');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/jpeg" href="../../assets/img/renard.png.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/dashboard.css" />
+  <title>Dashboard - Panel de Administración</title>
+  <style>
+    :root {
+  --primary: #FF5A00;
+  --secondary: #FF8C38;
+      --dark: #4A4A4A; /* Gris oscuro suave */
+      --light: #FFF9F2; /* Fondo muy claro con tono naranja */
+      --gray-light: #F5E9DC; /* Gris con tono naranja */
+      --sidebar-width: 280px;
+      --sidebar-collapsed-width: 80px;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark);
+      background: var(--light);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    /* Sidebar Styles */
+    .admin-sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: var(--sidebar-width);
+      height: 100vh;
+      background: white;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s;
+      z-index: 100;
+      overflow-y: auto;
+    }
+    
+    .sidebar-header {
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+    }
+    
+    .sidebar-header img {
+      height: 50px;
+      width: auto;
+      margin-bottom: 10px;
+      transition: all 0.3s;
+    }
+    
+    .sidebar-header h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0;
+      transition: all 0.3s;
+    }
+    
+    .sidebar-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .sidebar-menu li {
+      position: relative;
+    }
+    
+    .sidebar-menu li a {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      color: var(--dark);
+      text-decoration: none;
+      transition: all 0.3s;
+      border-left: 3px solid transparent;
+    }
+    
+    .sidebar-menu li a i {
+      margin-right: 10px;
+      font-size: 1.1rem;
+      min-width: 24px;
+      text-align: center;
+      color: var(--primary-dark);
+    }
+    
+    .sidebar-menu li a:hover {
+      background-color: rgba(255, 179, 71, 0.1);
+      color: var(--primary-dark);
+    }
+    
+    .sidebar-menu li.active a {
+      background-color: rgba(255, 179, 71, 0.1);
+      color: var(--primary-dark);
+      border-left-color: var(--primary-dark);
+    }
+    
+    /* Main Content Styles */
+    .admin-content {
+      margin-left: var(--sidebar-width);
+      padding: 20px;
+      transition: all 0.3s;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .admin-header {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid var(--primary);
+    }
+    
+    .admin-header h2 {
+      font-weight: 600;
+      margin: 0;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+    }
+    
+    .admin-header h2 i {
+      margin-right: 10px;
+      color: var(--primary-dark);
+    }
+    
+    /* Icon Grid Container - Centered */
+    .icon-grid-container {
+      background-color: white;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
+      margin-bottom: 20px;
+      border-top: 3px solid var(--primary);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--secondary);
+      text-align: center;
+    }
+    
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
+      padding-bottom: 20px;
+      width: 100%;
+      justify-items: center;
+    }
+
+    .icon-card {
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 160px;
+      height: 160px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 15px;
+      background: var(--primary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .icon-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(255, 179, 71, 0.2);
+      color: white;
+    }
+
+    .icon-card i {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      color: white;
+      transition: all 0.3s;
+    }
+    
+    .icon-card:hover i {
+      transform: scale(1.1);
+    }
+
+    .icon-card span {
+      font-weight: 600;
+      font-size: 1rem;
+      user-select: none;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .icon-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .icon-card:hover::after {
+      opacity: 1;
+    }
+
+    /* Category grouping */
+    .category-group {
+      margin-bottom: 30px;
+      width: 100%;
+    }
+    
+    .category-group:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1200px) {
+      .icon-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      }
+      
+      .icon-card {
+        width: 140px;
+        height: 140px;
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .admin-sidebar {
+        width: var(--sidebar-collapsed-width);
+      }
+      
+      .sidebar-header h4, 
+      .sidebar-menu li a span {
+        display: none;
+      }
+      
+      .sidebar-menu li a {
+        justify-content: center;
+        padding: 15px 0;
+      }
+      
+      .sidebar-menu li a i {
+        margin-right: 0;
+        font-size: 1.3rem;
+      }
+      
+      .admin-content {
+        margin-left: var(--sidebar-collapsed-width);
+      }
+      
+      .icon-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      }
+      
+      .icon-card {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .icon-card i {
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .admin-sidebar {
+        transform: translateX(-100%);
+      }
+      
+      .admin-sidebar.show {
+        transform: translateX(0);
+      }
+      
+      .admin-content {
+        margin-left: 0;
+      }
+      
+      .icon-grid {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        gap: 15px;
+      }
+      
+      .icon-card {
+        width: 110px;
+        height: 110px;
+        padding: 10px;
+      }
+      
+      .icon-card i {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+      
+      .icon-card span {
+        font-size: 0.9rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .icon-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .section-title {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <div id="sidebar-container"></div>
+
+  <!-- Main Content -->
+  <div class="admin-content">
+    <div class="admin-header">
+      <img src="../../assets/img/renard.png.png" alt="Logo" style="height: 50px; margin-right: 15px;">
+      <h2 style="display: inline-block; vertical-align: middle; margin: 0;"><i class="bi bi-speedometer2"></i> Panel de Administración</h2>
+    </div>
+
+    <!-- Icon grid organized by categories and centered -->
+    <div class="icon-grid-container">
+      <div class="category-group">
+        <h3 class="section-title"><i class="bi bi-shop"></i> Restaurantes</h3>
+        <div class="icon-grid">
+          <a href="../restaurante/restaurante.html" class="icon-card" title="Restaurantes" style="background-color: #FFB347;">
+            <i class="bi bi-shop"></i>
+            <span>Restaurantes</span>
+          </a>
+          <a href="../menu/menu.html" class="icon-card" title="Menús" style="background-color: #FFA07A;">
+            <i class="bi bi-menu-button-wide"></i>
+            <span>Menús</span>
+          </a>
+          <a href="../producto/producto.html" class="icon-card" title="Producto" style="background-color: #FF8C66;">
+            <i class="bi bi-basket"></i>
+            <span>Productos</span>
+          </a>
+          <a href="../categoriaMenu/categoriaMenu.html" class="icon-card" title="Categorías" style="background-color: #FF7F50;">
+            <i class="bi bi-list-ul"></i>
+            <span>Categorías</span>
+          </a>
+        </div>
+      </div>
+      
+      <div class="category-group">
+        <h3 class="section-title"><i class="bi bi-calendar-check"></i> Reservas</h3>
+        <div class="icon-grid">
+          <a href="../reservas/reservas.html" class="icon-card" title="Reservas" style="background-color: #FFD166;">
+            <i class="bi bi-calendar-check"></i>
+            <span>Reservas</span>
+          </a>
+          <a href="../reportes/reportes.html" class="icon-card" title="Reportes" style="background-color: #F4A261;">
+            <i class="bi bi-graph-up"></i>
+            <span>Reportes</span>
+          </a>
+          <a href="../zona/zona.html" class="icon-card" title="Zonas" style="background-color: #E76F51;">
+            <i class="bi bi-pin-map"></i>
+            <span>Zonas</span>
+          </a>
+        </div>
+      </div>
+      
+      <div class="category-group">
+        <h3 class="section-title"><i class="bi bi-people"></i> Usuarios</h3>
+        <div class="icon-grid">
+          <a href="../usuarioPanel/usuarioPanel.html" class="icon-card" title="Usuarios" style="background-color: #06D6A0;">
+            <i class="bi bi-people"></i>
+            <span>Usuarios</span>
+          </a>
+          <a href="../rolPanel/rolPanel.html" class="icon-card" title="Roles" style="background-color: #1B9AAA;">
+            <i class="bi bi-person-badge"></i>
+            <span>Roles</span>
+          </a>
+          <a href="../tipoDocumento/tipoDocumentoPanel.html" class="icon-card" title="Documentos" style="background-color: #EF476F;">
+            <i class="bi bi-file-earmark-text"></i>
+            <span>Documentos</span>
+          </a>
+        </div>
+      </div>
+      
+      <div class="category-group">
+        <h3 class="section-title"><i class="bi bi-gear"></i> Sistema</h3>
+        <div class="icon-grid">
+          <a href="../qrMenu/qrMenu.html" class="icon-card" title="QR Menú" style="background-color: #118AB2;">
+            <i class="bi bi-qr-code"></i>
+            <span>QR Menú</span>
+          </a>
+          <a href="../ubicacionPanel/ubicacionPanel.html" class="icon-card" title="Ubicaciones" style="background-color: #073B4C;">
+            <i class="bi bi-geo-alt"></i>
+            <span>Ubicaciones</span>
+          </a>
+          <a href="../tipoProducto/tipoProducto.html" class="icon-card" title="Tipos Producto" style="background-color: #FF9F1C;">
+            <i class="bi bi-tags"></i>
+            <span>Tipos Producto</span>
+          </a>
+          <a href="../login/login.html" class="icon-card" title="Login" style="background-color: #6A4C93;">
+            <i class="bi bi-box-arrow-in-right"></i>
+            <span>Login</span>
+          </a>
+          <a href="../login/login.html" class="icon-card" title="Cerrar Sesión" style="background-color: #4A4E69;">
+            <i class="bi bi-box-arrow-right"></i>
+            <span>Cerrar Sesión</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="src\app\ViewsRestaurante\sidebar-dinamico.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderSidebar('sidebar-container');
+    });
+  </script>
+</body>
+</html>

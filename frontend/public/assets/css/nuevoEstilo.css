@@ -1,0 +1,17 @@
+
+/* Nombre del restaurante */
+.restaurante .nombre {
+
+  font-family: 'Arial Black', sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+/* Eslogan */
+.restaurante .eslogan {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 16px;
+  color: #090909;
+  /*text-shadow: 1px 1px 3px rgba(0,0,0,0.6);*/
+}
