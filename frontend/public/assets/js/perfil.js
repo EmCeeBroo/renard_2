@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function obtenerPerfil() {
         try {
             // Aquí se usa un id fijo 1 para ejemplo, puede modificarse para ser dinámico
-            const response = await fetch('http://192.168.0.9:3000//perfil/1');
+            const response = await fetch('http://127.0.0.1:3000//perfil/1');
             if (!response.ok) {
                 throw new Error('No se pudo obtener el perfil');
             }

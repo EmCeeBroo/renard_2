@@ -124,7 +124,7 @@ const registerUsuario = async () => {
   }
 
   try {
-    const response = await fetch("http://192.168.0.9:3000/renard/register", {
+    const response = await fetch("http://127.0.0.1:3000/renard/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ correo, contrasena, estado_usuario_fk, id_rol }),
@@ -189,7 +189,7 @@ const loginUsuario = async () => {
   }
 
   try {
-    const response = await fetch("http://192.168.0.9:3000/renard/login", {
+    const response = await fetch("http://127.0.0.1:3000/renard/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ correo: correo, contrasena: contrasena }),

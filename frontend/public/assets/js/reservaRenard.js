@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const response = await fetch('http://192.168.0.9:3000/renard/sucursal');
+      const response = await fetch('http://127.0.0.1:3000/renard/sucursal');
       const todasLasSucursales = await response.json();
       const sucursalesFiltradas = todasLasSucursales.filter(s => s.restaurante_fk == restauranteId);
       
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const response = await fetch(`http://192.168.0.9:3000/renard/mesa/sucursal/${sucursalId}`);
+      const response = await fetch(`http://127.0.0.1:3000/renard/mesa/sucursal/${sucursalId}`);
       if (!response.ok) throw new Error("Error al obtener mesas");
       const mesas = await response.json();
 
@@ -261,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
   formReservacion.numero_personas.addEventListener("input", actualizarBoton);
 
   // Cargar restaurantes
-  fetch("http://192.168.0.9:3000/renard/restaurante")
+  fetch("http://127.0.0.1:3000/renard/restaurante")
     .then(response => response.json())
     .then(data => {
       renderRestaurantes(data);
@@ -292,7 +292,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://192.168.0.9:3000/renard/reservacion", {
+      const response = await fetch("http://127.0.0.1:3000/renard/reservacion", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

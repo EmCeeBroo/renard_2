@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         showLoading(true);
-        const response = await fetch('http://192.168.0.9:3000/renard/menu', {
+        const response = await fetch('http://127.0.0.1:3000/renard/menu', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         showLoading(true);
-        const response = await fetch(`http://192.168.0.9:3000/renard/menu/${id}`, {
+        const response = await fetch(`http://127.0.0.1:3000/renard/menu/${id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
@@ -171,8 +171,8 @@ async function cargarMenus() {
     
     // Construir la URL con o sin filtro de restaurante
     const url = restauranteFk 
-      ? `http://192.168.0.9:3000/renard/menu?restaurante_fk=${restauranteFk}`
-      : 'http://192.168.0.9:3000/renard/menu';
+      ? `http://127.0.0.1:3000/renard/menu?restaurante_fk=${restauranteFk}`
+      : 'http://127.0.0.1:3000/renard/menu';
     
     const response = await fetch(url);
     if (!response.ok) {
@@ -250,7 +250,7 @@ function renderizarMenus(menus) {
 async function abrirModalEditarMenu(id) {
   try {
     showLoading(true);
-    const response = await fetch(`http://192.168.0.9:3000/renard/menu/${id}`);
+    const response = await fetch(`http://127.0.0.1:3000/renard/menu/${id}`);
     if (!response.ok) {
       throw new Error(`Error ${response.status}: ${response.statusText}`);
     }
@@ -287,7 +287,7 @@ function confirmarEliminarMenu(id) {
 async function eliminarMenu(id) {
   try {
     showLoading(true);
-    const response = await fetch(`http://192.168.0.9:3000/renard/menu/${id}`, {
+    const response = await fetch(`http://127.0.0.1:3000/renard/menu/${id}`, {
       method: 'DELETE'
     });
     if (!response.ok) {

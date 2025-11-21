@@ -63,7 +63,7 @@ async function sendRecoveryEmail(email) {
     setSubmittingState(true);
     
     try {
-        const response = await fetch('http://192.168.0.9:3000/recuperar-contrasena', {
+        const response = await fetch('http://127.0.0.1:3000/recuperar-contrasena', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

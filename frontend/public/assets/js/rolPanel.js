@@ -6,7 +6,7 @@ let itemsPorPagina = 10;
 let filtroBusqueda = '';
 let filtroRestaurante = '';
 
-const URL = "http://192.168.0.9:3000/renard/rol";
+const URL = "http://127.0.0.1:3000/renard/rol";
 const URL_RESTAURANTES = "renard/restaurante";
 
 // Función para mostrar/ocultar loading

@@ -1,4 +1,4 @@
-const URL = "http://192.168.0.9:3000/renard/restaurante"; 
+const URL = "http://127.0.0.1:3000/renard/restaurante"; 
 
 
 // Función para obtener datos de restaurantes y ubicaciones

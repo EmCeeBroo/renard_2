@@ -7,7 +7,7 @@ let estadosMesa = [];
 let sucursales = [];
 
 // 
-const URL = "http://192.168.0.9:3000/renard/mesa"; 
+const URL = "http://127.0.0.1:3000/renard/mesa"; 
 
 // ===============================
 // INIT
@@ -42,9 +42,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 // ===============================
 async function cargarSelects() {
   [zonas, estadosMesa, sucursales] = await Promise.all([
-    fetch('http://192.168.0.9:3000/renard/zona').then(r => r.json()),
-    fetch('http://192.168.0.9:3000/renard/estado-mesa').then(r => r.json()),
-    fetch('http://192.168.0.9:3000/renard/sucursal').then(r => r.json()),
+    fetch('http://127.0.0.1:3000/renard/zona').then(r => r.json()),
+    fetch('http://127.0.0.1:3000/renard/estado-mesa').then(r => r.json()),
+    fetch('http://127.0.0.1:3000/renard/sucursal').then(r => r.json()),
   ]);
 
   llenarSelect(zonas, 'createZona', 'nombre', 'id_zona');

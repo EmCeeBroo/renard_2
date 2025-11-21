@@ -8,7 +8,7 @@ let restaurantes = [];
 let sucursales = [];
 let mesas = [];
 
-const URL = "http://192.168.0.9:3000/renard/reservacion"; 
+const URL = "http://127.0.0.1:3000/renard/reservacion"; 
 
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -53,11 +53,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function cargarSelects() {
   [usuarios, estadosReservacion, restaurantes, sucursales, mesas] = await Promise.all([
-    fetch('http://192.168.0.9:3000/renard/usuario').then(r => r.json()),
-    fetch('http://192.168.0.9:3000/renard/estado-reservacion').then(r => r.json()),
-    fetch('http://192.168.0.9:3000/renard/restaurante').then(r => r.json()),
-    fetch('http://192.168.0.9:3000/renard/sucursal').then(r => r.json()),
-    fetch('http://192.168.0.9:3000/renard/mesa').then(r => r.json())
+    fetch('http://127.0.0.1:3000/renard/usuario').then(r => r.json()),
+    fetch('http://127.0.0.1:3000/renard/estado-reservacion').then(r => r.json()),
+    fetch('http://127.0.0.1:3000/renard/restaurante').then(r => r.json()),
+    fetch('http://127.0.0.1:3000/renard/sucursal').then(r => r.json()),
+    fetch('http://127.0.0.1:3000/renard/mesa').then(r => r.json())
   ]);
 
   llenarSelect(usuarios, 'usuario_fk', 'correo', 'id_usuario');
@@ -102,7 +102,7 @@ async function cargarSucursalesPorRestaurante() {
     });
   }
 
-  const response = await fetch('http://192.168.0.9:3000/renard/sucursal');
+  const response = await fetch('http://127.0.0.1:3000/renard/sucursal');
   const todasLasSucursales = await response.json();
   const sucursalesFiltradas = todasLasSucursales.filter(s => s.restaurante_fk == restauranteId);
 
@@ -120,7 +120,7 @@ async function cargarMesasPorSucursal() {
     return;
   }
 
-  const response = await fetch(`http://192.168.0.9:3000/renard/mesa/sucursal/${sucursalId}`);
+  const response = await fetch(`http://127.0.0.1:3000/renard/mesa/sucursal/${sucursalId}`);
   const mesas = await response.json();
   llenarSelect(mesas, 'mesa_fk', 'numero_mesa', 'id_mesa');
   mesaSelect.disabled = false;

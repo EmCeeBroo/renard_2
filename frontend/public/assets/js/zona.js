@@ -3,7 +3,7 @@ import {showAlert, showLoading } from '../../assets/js/utils.js';
 let modalZona;
 let filtroBusqueda = '';
 
-const URL = "http://192.168.0.9:3000/renard/zona"; 
+const URL = "http://127.0.0.1:3000/renard/zona"; 
 
 async function cargarZonas() {
     try {

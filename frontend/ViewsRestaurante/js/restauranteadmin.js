@@ -87,7 +87,7 @@ function initRestauranteAdmin() {
             }
 
             // Obtener restaurante basado en el rol
-            const res = await fetch(`http://192.168.0.9:3000/renard/restaurante/rol/${rolId}`);
+            const res = await fetch(`http://127.0.0.1:3000/renard/restaurante/rol/${rolId}`);
             if (!res.ok) {
                 const errorData = await res.json();
                 throw new Error(errorData.error || 'Error al obtener restaurante');
@@ -180,7 +180,7 @@ function initRestauranteAdmin() {
         }
 
         try {
-            const res = await fetch(`http://192.168.0.9:3000/renard/restaurante/${id_restaurante}`, {
+            const res = await fetch(`http://127.0.0.1:3000/renard/restaurante/${id_restaurante}`, {
                 method: 'PUT',
                 body: formData
             });

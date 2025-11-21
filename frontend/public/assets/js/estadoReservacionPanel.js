@@ -3,7 +3,7 @@ import { TableManager } from '../../assets/js/tableFilters.js';
 // Variables globales
 let modalEstadoReservacion;
 //
-const URL = "http://192.168.0.9:3000/renard/estado-reservacion"; 
+const URL = "http://127.0.0.1:3000/renard/estado-reservacion"; 
 
 
 // Inicialización cuando el DOM está listo

@@ -19,7 +19,7 @@ app.use(cors({
   origin: [
     "http://127.0.0.1:5500",
     "http://localhost:5500",
-    "http://192.168.0.9:5500",
+    "http://127.0.0.1:5500",
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -103,10 +103,10 @@ app.use((req, res) => {
 // FUNCIÓN PARA MOSTRAR LINK DEL SERVIDOR
 // ============================================
 export function showServerLink(port, isVM = true) {
-  const host = isVM ? '192.168.0.9' : 'localhost';
+  const host = isVM ? '127.0.0.1' : 'localhost';
   console.log(`🚀 Backend API corriendo en http://${host}:${port}`);
   console.log(`📡 Endpoints disponibles en http://${host}:${port}/renard/`);
-  console.log(` Frontend Live Server en http://${host}:5500`);
+  console.log(` Frontend Live Server en http://${host}:5500/frontend/login/login.html`);
 }
 
 console.log(

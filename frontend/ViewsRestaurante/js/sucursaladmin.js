@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchSucursales() {
         try {
-            const res = await fetch(`http://192.168.0.9:3000/renard/sucursal/restaurante/${restauranteId}`);
+            const res = await fetch(`http://127.0.0.1:3000/renard/sucursal/restaurante/${restauranteId}`);
             if (!res.ok) {
                 throw new Error(`HTTP error! status: ${res.status}`);
             }
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const res = await fetch(`http://192.168.0.9:3000/renard/sucursal/${id_sucursal}`, {
+            const res = await fetch(`http://127.0.0.1:3000/renard/sucursal/${id_sucursal}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const res = await fetch(`http://192.168.0.9:3000/renard/sucursal/${id_sucursal}`, {
+                    const res = await fetch(`http://127.0.0.1:3000/renard/sucursal/${id_sucursal}`, {
                         method: 'DELETE'
                     });
 
@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                const response = await fetch('http://192.168.0.9:3000/renard/sucursal', {
+                const response = await fetch('http://127.0.0.1:3000/renard/sucursal', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

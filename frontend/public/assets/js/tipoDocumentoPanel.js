@@ -1,7 +1,7 @@
 import { showAlert, showLoading } from '../../assets/js/utils.js';
 
 let modalTipoDocumento;
-const URL = "http://192.168.0.9:3000/renard/tipo-documento";
+const URL = "http://127.0.0.1:3000/renard/tipo-documento";
 
 let tipoDocumentosData = [];
 let filtroBusqueda = '';

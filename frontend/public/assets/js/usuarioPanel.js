@@ -9,7 +9,7 @@ let filtroBusqueda = '';
 let filtroRol = ''; // filtro de rol seleccionado
 let usuariosData = [];
 
-const URL = "http://192.168.0.9:3000/renard/usuario"; 
+const URL = "http://127.0.0.1:3000/renard/usuario"; 
 
 
 
@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
 async function cargarEstadosYRoles() {
   try {
     const [estadosResponse, rolesResponse] = await Promise.all([
-      fetch('http://192.168.0.9:3000/renard/estado-usuario'),
-      fetch('http://192.168.0.9:3000/renard/rol')
+      fetch('http://127.0.0.1:3000/renard/estado-usuario'),
+      fetch('http://127.0.0.1:3000/renard/rol')
     ]);
 
     if (!estadosResponse.ok || !rolesResponse.ok) {

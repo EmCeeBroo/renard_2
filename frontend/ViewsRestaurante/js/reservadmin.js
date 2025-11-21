@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             mostrarCargando(true);
             
-            const res = await fetch(`http://192.168.0.9:3000/renard/reservacion/restaurante/${restauranteId}`);
+            const res = await fetch(`http://127.0.0.1:3000/renard/reservacion/restaurante/${restauranteId}`);
             
             if (!res.ok) {
                 throw new Error(`Error HTTP! estado: ${res.status}`);
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const usuarioId of usuarioIds) {
             if (!window.usuariosCache[usuarioId]) {
                 try {
-                    const res = await fetch(`http://192.168.0.9:3000/renard/usuario/${usuarioId}`);
+                    const res = await fetch(`http://127.0.0.1:3000/renard/usuario/${usuarioId}`);
                     if (res.ok) {
                         const usuario = await res.json();
                         // Verificar diferentes posibles estructuras de respuesta
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const sucursalId of sucursalIds) {
             if (!window.sucursalesCache[sucursalId]) {
                 try {
-                    const res = await fetch(`http://192.168.0.9:3000/renard/sucursal/${sucursalId}`);
+                    const res = await fetch(`http://127.0.0.1:3000/renard/sucursal/${sucursalId}`);
                     if (res.ok) {
                         const sucursal = await res.json();
                         // Verificar diferentes posibles estructuras de respuesta
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const mesaId of mesaIds) {
             if (!window.mesasCache[mesaId]) {
                 try {
-                    const res = await fetch(`http://192.168.0.9:3000/renard/mesa/${mesaId}`);
+                    const res = await fetch(`http://127.0.0.1:3000/renard/mesa/${mesaId}`);
                     if (res.ok) {
                         const mesa = await res.json();
                         // Verificar diferentes posibles estructuras de respuesta
@@ -411,7 +411,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // Usar la ruta específica para actualizar solo el estado
-            const res = await fetch(`http://192.168.0.9:3000/renard/reservacion/${id_reservacion}/estado`, {
+            const res = await fetch(`http://127.0.0.1:3000/renard/reservacion/${id_reservacion}/estado`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -481,7 +481,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (resultado.isConfirmed) {
             try {
-                const res = await fetch(`http://192.168.0.9:3000/renard/reservacion/${id_reservacion}`, {
+                const res = await fetch(`http://127.0.0.1:3000/renard/reservacion/${id_reservacion}`, {
                     method: 'DELETE'
                 });
 

@@ -38,7 +38,7 @@ console.log("Recuperar contraseña script loaded");
                 showLoading(true);
                 console.log("Validando token con el servidor...");
 
-                const response = await fetch('http://192.168.0.9:3000/renard/validar-token', {
+                const response = await fetch('http://127.0.0.1:3000/renard/validar-token', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ token })
@@ -122,7 +122,7 @@ console.log("Recuperar contraseña script loaded");
 
                 console.log("Enviando nueva contraseña al servidor...");
 
-                const response = await fetch('http://192.168.0.9:3000/renard/restablecer-contrasena', {
+                const response = await fetch('http://127.0.0.1:3000/renard/restablecer-contrasena', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ 

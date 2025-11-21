@@ -1,7 +1,7 @@
 let urlMenuGlobal = null;
 
 // `${URL}/${id}`
-const URL = "http://192.168.0.9:3000/renard/restaurante"; 
+const URL = "http://127.0.0.1:3000/renard/restaurante"; 
 
 
 // Geocodificar dirección → coordenadas
@@ -76,7 +76,7 @@ async function cargarRestaurante(id) {
 
 async function cargarPlatos(idRestaurante) {
   try {
-    const resp = await fetch(`http://192.168.0.9:5500/productos/restaurante?restaurante_fk=${idRestaurante}`);
+    const resp = await fetch(`http://127.0.0.1:5500/productos/restaurante?restaurante_fk=${idRestaurante}`);
     if (!resp.ok) throw new Error(`Error al cargar platos: ${resp.status} ${resp.statusText}`);
     const platos = await resp.json();
 

@@ -5,7 +5,7 @@ let modalEditCategoria;
 let categoriasData = [];
 let filtroBusqueda = '';
 
-const URL = "http://192.168.0.9:3000/renard/categoria"; 
+const URL = "http://127.0.0.1:3000/renard/categoria"; 
 
 document.addEventListener('DOMContentLoaded', () => {
   modalCategoria = new bootstrap.Modal(document.getElementById('createCategoriaModal'));

@@ -10,7 +10,7 @@ async function crearAdminRestaurante() {
   };
 
   try {
-    const response = await fetch('http://192.168.0.9:3000/api/usuarios', {
+    const response = await fetch('http://127.0.0.1:3000/api/usuarios', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ async function crearAdminRestaurante() {
 // Función para verificar si el usuario ya existe
 async function verificarUsuarioExistente(correo) {
   try {
-    const response = await fetch('http://192.168.0.9:3000/api/usuarios');
+    const response = await fetch('http://127.0.0.1:3000/api/usuarios');
     const usuarios = await response.json();
     
     return usuarios.some(usuario => usuario.correo === correo);
@@ -71,7 +71,7 @@ async function crearUsuarioAdminRestaurante() {
   };
 
   try {
-    const response = await fetch('http://192.168.0.9:3000/api/usuarios', {
+    const response = await fetch('http://127.0.0.1:3000/api/usuarios', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

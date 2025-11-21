@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         showLoading(true);
-        const response = await fetch('http://192.168.0.9:3000/renard/categoria', {
+        const response = await fetch('http://127.0.0.1:3000/renard/categoria', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         showLoading(true);
-        const response = await fetch(`http://192.168.0.9:3000/renard/categoria/${id}`, {
+        const response = await fetch(`http://127.0.0.1:3000/renard/categoria/${id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
@@ -246,7 +246,7 @@ function renderizarCategorias(categorias) {
 async function abrirModalEditarCategoria(id) {
   try {
     showLoading(true);
-    const response = await fetch(`http://192.168.0.9:3000/renard/categoria/${id}`);
+    const response = await fetch(`http://127.0.0.1:3000/renard/categoria/${id}`);
     if (!response.ok) {
       throw new Error(`Error ${response.status}: ${response.statusText}`);
     }
@@ -282,7 +282,7 @@ function confirmarEliminarCategoria(id) {
 async function eliminarCategoria(id) {
   try {
     showLoading(true);
-    const response = await fetch(`http://192.168.0.9:3000/renard/categoria/${id}`, {
+    const response = await fetch(`http://127.0.0.1:3000/renard/categoria/${id}`, {
       method: 'DELETE'
     });
     if (!response.ok) {

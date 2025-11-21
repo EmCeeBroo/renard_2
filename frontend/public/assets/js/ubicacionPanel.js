@@ -3,8 +3,8 @@ let modalCrearUbicacion;
 
 let restaurantes = [];
 
-const URL = "http://192.168.0.9:3000/renard/ubicacion"; 
-const RESTAURANTE = "http://192.168.0.9:3000/renard/restaurante"; 
+const URL = "http://127.0.0.1:3000/renard/ubicacion"; 
+const RESTAURANTE = "http://127.0.0.1:3000/renard/restaurante"; 
 
 
 

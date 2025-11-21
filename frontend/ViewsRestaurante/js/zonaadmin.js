@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         showLoading(true);
-        const response = await fetch('http://192.168.0.15:3000/renard/zona', {
+        const response = await fetch('http://127.0.0.1:3000/renard/zona', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         showLoading(true);
-        const response = await fetch(`http://192.168.0.15:3000/renard/zona/${id}`, {
+        const response = await fetch(`http://127.0.0.1:3000/renard/zona/${id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
@@ -249,7 +249,7 @@ function renderizarZona(zona) {
 async function abrirModalEditarZona(id) {
   try {
     showLoading(true);
-    const response = await fetch(`http://192.168.0.15:3000/renard/zona/${id}`);
+    const response = await fetch(`http://127.0.0.1:3000/renard/zona/${id}`);
     if (!response.ok) {
       throw new Error(`Error ${response.status}: ${response.statusText}`);
     }
@@ -286,7 +286,7 @@ function confirmarEliminarZona(id) {
 async function eliminarZona(id) {
   try {
     showLoading(true);
-    const response = await fetch(`http://192.168.0.15:3000/renard/zona/${id}`, {
+    const response = await fetch(`http://127.0.0.1:3000/renard/zona/${id}`, {
       method: 'DELETE'
     });
     if (!response.ok) {

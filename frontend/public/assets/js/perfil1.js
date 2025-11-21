@@ -24,7 +24,7 @@ function obtenerIdUsuario() {
 let tiposDocMap = {};
 async function cargarTiposDocumento() {
   try {
-    const res = await fetch("http://192.168.0.9:3000/renard/tipos-documento");
+    const res = await fetch("http://127.0.0.1:3000/renard/tipos-documento");
     const tipos = await res.json();
     const select = document.getElementById("inputTipoDocumento");
 
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // ✅ PRIMERO OBTENER EL CORREO DEL USUARIO
     try {
-      const resUsuario = await fetch(`http://192.168.0.9:3000/renard/usuario/${idUsuario}`);
+      const resUsuario = await fetch(`http://127.0.0.1:3000/renard/usuario/${idUsuario}`);
       if (resUsuario.ok) {
         const usuario = await resUsuario.json();
         correoUsuario = usuario.correo || "";
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // 2. Obtener TODOS los perfiles y buscar el del usuario actual
-    const res = await fetch("http://192.168.0.9:3000/renard/perfil");
+    const res = await fetch("http://127.0.0.1:3000/renard/perfil");
 
     if (res.ok) {
       const perfiles = await res.json();
@@ -250,7 +250,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       try {
         const res = await fetch(
-          `http://192.168.0.9:3000/perfil/${idUsuario}/foto`,
+          `http://127.0.0.1:3000/perfil/${idUsuario}/foto`,
           {
             method: "PUT",
             body: formData,
@@ -326,7 +326,7 @@ document
       console.log("📦 Datos:", datos);
 
       const res = await fetch(
-        `http://192.168.0.9:3000/perfil/${idPerfil}`,
+        `http://127.0.0.1:3000/perfil/${idPerfil}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

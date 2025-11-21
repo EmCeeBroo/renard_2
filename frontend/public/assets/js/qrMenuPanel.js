@@ -9,9 +9,9 @@ let qrMenusData = [];
 let filtroBusqueda = '';
 
 
-const URL = "http://192.168.0.9:3000/renard/qr-menu"; 
-const MENU = "http://192.168.0.9:3000/renard/menu";
-const RESTAURANTE = 'http://192.168.0.9:3000/renard/restaurante';
+const URL = "http://127.0.0.1:3000/renard/qr-menu"; 
+const MENU = "http://127.0.0.1:3000/renard/menu";
+const RESTAURANTE = 'http://127.0.0.1:3000/renard/restaurante';
 
 
 document.addEventListener('DOMContentLoaded', async () => {

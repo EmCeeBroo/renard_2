@@ -80,7 +80,7 @@ async function cargarTodasLasReservas(id_usuario = null, userToken = null) {
     `;
         
     // IMPORTANTE: Verificar que tu backend filtre correctamente por usuario_fk
-    const response = await fetch(`http://192.168.0.9:3000/renard/historial-reservacion/usuario?id_usuario=${id_usuario}`, {
+    const response = await fetch(`http://127.0.0.1:3000/renard/historial-reservacion/usuario?id_usuario=${id_usuario}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${userToken}`,
@@ -387,7 +387,7 @@ async function confirmarReserva(reservaId) {
   try {
     const userToken = localStorage.getItem('token');
     
-    const response = await fetch(`http://192.168.0.9:3000/renard/historial-reservacion/${reservaId}`, {
+    const response = await fetch(`http://127.0.0.1:3000/renard/historial-reservacion/${reservaId}`, {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${userToken}`,
@@ -488,7 +488,7 @@ async function cancelarReserva(reservaId) {
   try {
     const userToken = localStorage.getItem('token');
     
-    const response = await fetch(`http://192.168.0.9:3000/renard/reservacion/${reservaId}/estado`, {
+    const response = await fetch(`http://127.0.0.1:3000/renard/reservacion/${reservaId}/estado`, {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${userToken}`,

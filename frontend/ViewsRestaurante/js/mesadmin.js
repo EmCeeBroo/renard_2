@@ -23,9 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             // Cargar datos necesarios
             [zonas, estadosMesa, sucursales] = await Promise.all([
-                fetch('http://192.168.0.9:3000/renard/zona').then(r => r.json()),
-                fetch('http://192.168.0.9:3000/renard/estado-mesa').then(r => r.json()),
-                fetch(`http://192.168.0.9:3000/renard/sucursal/restaurante/${restauranteId}`).then(r => r.json())
+                fetch('http://127.0.0.1:3000/renard/zona').then(r => r.json()),
+                fetch('http://127.0.0.1:3000/renard/estado-mesa').then(r => r.json()),
+                fetch(`http://127.0.0.1:3000/renard/sucursal/restaurante/${restauranteId}`).then(r => r.json())
             ]);
 
             // Poblar los selects
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let allMesas = [];
             if (Array.isArray(sucursales) && sucursales.length > 0) {
                 const mesasPromises = sucursales.map(sucursal =>
-                    fetch(`http://192.168.0.9:3000/renard/mesa/sucursal/${sucursal.id_sucursal}`)
+                    fetch(`http://127.0.0.1:3000/renard/mesa/sucursal/${sucursal.id_sucursal}`)
                         .then(r => r.ok ? r.json() : [])
                         .catch(error => {
                             console.error(`Error al obtener mesas de sucursal ${sucursal.id_sucursal}:`, error);
@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const res = await fetch(`http://192.168.0.9:3000/renard/mesa/${id_mesa}`, {
+            const res = await fetch(`http://127.0.0.1:3000/renard/mesa/${id_mesa}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const res = await fetch(`http://192.168.0.9:3000/renard/mesa/${id_mesa}`, {
+                    const res = await fetch(`http://127.0.0.1:3000/renard/mesa/${id_mesa}`, {
                         method: 'DELETE'
                     });
 
@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                const response = await fetch('http://192.168.0.9:3000/renard/mesa', {
+                const response = await fetch('http://127.0.0.1:3000/renard/mesa', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

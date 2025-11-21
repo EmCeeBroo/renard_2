@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Función para cargar las reservas del historial
   async function cargarHistorialReservas() {
     try {
-      const response = await fetch(`http://192.168.0.9:3000/renard/historial-reservacion?restaurante_fk=${restauranteId}`);
+      const response = await fetch(`http://127.0.0.1:3000/renard/historial-reservacion?restaurante_fk=${restauranteId}`);
       if (!response.ok) {
         throw new Error(`Error HTTP: ${response.status}`);
       }

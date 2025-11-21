@@ -4,9 +4,9 @@ let allProductos = [];
 let categoriaMap = {};
 let menuMap = {};
 
-const URL = "http://192.168.0.9:3000/renard/productos"; 
-const MENU = "http://192.168.0.9:3000/renard/menu";
-const CATEGORIA = "http://192.168.0.9:3000/renard/categoria";
+const URL = "http://127.0.0.1:3000/renard/productos"; 
+const MENU = "http://127.0.0.1:3000/renard/menu";
+const CATEGORIA = "http://127.0.0.1:3000/renard/categoria";
 
 async function init() {
     await cargarMenus();

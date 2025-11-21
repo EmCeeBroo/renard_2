@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchMenus(restauranteId) {
         try {
-            const res = await fetch(`http://192.168.0.9:3000/renard/menu?restaurante_fk=${restauranteId}`, {
+            const res = await fetch(`http://127.0.0.1:3000/renard/menu?restaurante_fk=${restauranteId}`, {
                 headers: {
                     'Autorizado': localStorage.getItem('token')
                 }
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchCategorias(restauranteId) {
         try {
-            const res = await fetch(`http://192.168.0.9:3000/renard/categoria?restaurante_fk=${restauranteId}`, {
+            const res = await fetch(`http://127.0.0.1:3000/renard/categoria?restaurante_fk=${restauranteId}`, {
                 headers: {
                     'Autorizado': localStorage.getItem('token')
                 }
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchProductos(restauranteId) {
         try {
-            const res = await fetch(`http://192.168.0.9:3000/renard/productos?restaurante_fk=${restauranteId}`, {
+            const res = await fetch(`http://127.0.0.1:3000/renard/productos?restaurante_fk=${restauranteId}`, {
                 headers: {
                     'Autorizado': localStorage.getItem('token')
                 }
@@ -327,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             try {
-                const res = await fetch(`http://192.168.0.9:3000/renard/productos/${id_producto}`, {
+                const res = await fetch(`http://127.0.0.1:3000/renard/productos/${id_producto}`, {
                     method: 'PUT',
                     headers: {
                         'Autorizado': localStorage.getItem('token')
@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             try {
-                const response = await fetch('http://192.168.0.9:3000/renard/productos', {
+                const response = await fetch('http://127.0.0.1:3000/renard/productos', {
                     method: 'POST',
                     headers: {
                         'Autorizado': localStorage.getItem('token')
@@ -502,7 +502,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const res = await fetch(`http://192.168.0.9:3000/renard/productos/${id_producto}`, {
+                    const res = await fetch(`http://127.0.0.1:3000/renard/productos/${id_producto}`, {
                         method: 'DELETE',
                         headers: {
                             'Autorizado': localStorage.getItem('token')

@@ -42,7 +42,7 @@ function llenarSelect(data, selectId, textProp, valueProp) {
 async function cargarSucursales() {
     try {
         showLoading(true);
-        const response = await fetch('http://192.168.0.9:3000/renard/restaurante');
+        const response = await fetch('http://127.0.0.1:3000/renard/restaurante');
         if (!response.ok) throw new Error('Error al cargar sucursales');
         
         sucursales = await response.json();
@@ -59,8 +59,8 @@ async function cargarSucursales() {
 async function cargarDatosAuxiliares() {
     try {
         [zonas, estadosMesa] = await Promise.all([
-            fetch('http://192.168.0.9:3000/renard/zona').then(r => r.json()),
-            fetch('http://192.168.0.9:3000/renard/estado-mesa').then(r => r.json())
+            fetch('http://127.0.0.1:3000/renard/zona').then(r => r.json()),
+            fetch('http://127.0.0.1:3000/renard/estado-mesa').then(r => r.json())
         ]);
     } catch (error) {
         console.error('Error al cargar datos auxiliares:', error);
@@ -107,9 +107,9 @@ async function cargarDatos() {
 // Cargar mesas por sucursal
 async function cargarMesas(sucursalId) {
     try {
-        let url = 'http://192.168.0.9:3000/renard/mesa';
+        let url = 'http://127.0.0.1:3000/renard/mesa';
         if (sucursalId) {
-            url = `http://192.168.0.9:3000/renard/mesa/sucursal/${sucursalId}`;
+            url = `http://127.0.0.1:3000/renard/mesa/sucursal/${sucursalId}`;
         }
         
         const response = await fetch(url);
@@ -126,7 +126,7 @@ async function cargarMesas(sucursalId) {
 // Cargar reservaciones filtradas
 async function cargarReservaciones(fecha, hora, sucursalId) {
     try {
-        let url = `http://192.168.0.9:3000/renard/reservacion/filtradas?fecha=${fecha}&hora=${hora}`;
+        let url = `http://127.0.0.1:3000/renard/reservacion/filtradas?fecha=${fecha}&hora=${hora}`;
         if (sucursalId) {
             url += `&restaurante_fk=${sucursalId}`;
         }

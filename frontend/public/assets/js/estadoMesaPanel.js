@@ -2,7 +2,7 @@ import { TableManager } from '../../assets/js/tableFilters.js';
 
 // Variables globales
 let modalEstadoMesa;
-const URL = "http://192.168.0.9:3000/renard/estado-mesa";
+const URL = "http://127.0.0.1:3000/renard/estado-mesa";
 
 // Inicialización cuando el DOM está listo
 document.addEventListener('DOMContentLoaded', () => {

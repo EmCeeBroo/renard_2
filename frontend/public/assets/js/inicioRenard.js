@@ -103,7 +103,7 @@ async function cargarHistorialReservas() {
     `;
     
     // Llamada REAL usando el ID del usuario parseado
-    const response = await fetch(`http://192.168.0.9:3000/renard/historial-reservacion/usuario?id_usuario=${usuario.id_usuario}`, {
+    const response = await fetch(`http://127.0.0.1:3000/renard/historial-reservacion/usuario?id_usuario=${usuario.id_usuario}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${userToken}`,
