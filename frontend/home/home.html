@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RENARD - Plataforma de Reservas Gastronómicas</title>
+    <link rel="stylesheet" href="../public/assets/css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../public/assets/img/renard.png">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="../public/assets/img/renard.png" alt="Logo RENARD" class="logo-img">
+                    <h1>RENARD</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#beneficios">Beneficios</a></li>
+                    <li><a href="#como-funciona">Cómo funciona</a></li>
+                    <li><a href="#clientes">Para Clientes</a></li>
+                    <li><a href="#restaurantes">Para Restaurantes</a></li>
+                    <li><a href="#" id="openContactModal">Contacto</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="../login/login.html" class="btn btn-primary">Iniciar sesión</a>
+                    <a href="../registro/registro.html" class="btn btn-primary">Registrarse</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Transforma tu experiencia gastronómica con RENARD</h1>
+                    <p>La plataforma líder que conecta a comensales con los mejores restaurantes, simplificando las reservas y maximizando experiencias.</p>
+                </div>
+                <div class="hero-image">
+                    <div class="image-placeholder">
+                        <img src="../public/assets/img/renard_navidad.png" alt="RENARD Navidad">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beneficios Section -->
+    <section id="beneficios" class="benefits">
+        <div class="container">
+            <h2>¿Por qué elegir RENARD?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🕒</div>
+                    <h3>Reservas 24/7</h3>
+                    <p>Haz tus reservas en cualquier momento, desde cualquier lugar, sin complicaciones.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔒</div>
+                    <h3>Seguro y Confiable</h3>
+                    <p>Tus datos están protegidos y tus reservas garantizadas con nuestro sistema seguro.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⭐</div>
+                    <h3>Restaurantes Exclusivos</h3>
+                    <p>Accede a una selección curada de los mejores establecimientos gastronómicos.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📱</div>
+                    <h3>Interfaz Intuitiva</h3>
+                    <p>Diseño pensado para una experiencia de usuario fluida y agradable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Para Clientes Section -->
+    <section id="clientes" class="for-customers">
+        <div class="container">
+            <div class="section-content">
+                <div class="section-text">
+                    <h2>Para Comensales</h2>
+                    <p>Descubre una nueva forma de disfrutar de la gastronomía. Con RENARD, reservar tu mesa favorita es más fácil que nunca.</p>
+                    <ul class="feature-list">
+                        <li>Encuentra restaurantes por tipo de cocina, ubicación o valoración</li>
+                        <li>Reserva instantáneamente sin llamadas telefónicas</li>
+                        <li>Accede a ofertas exclusivas y experiencias especiales</li>
+                    </ul>
+                    <a href="../login/login.html" class="btn btn-primary">Empezar a Reservar</a>
+                </div>
+                <div class="section-image">
+                    <div class="gif-container">
+                        <img src="../public/assets/gif/cartel.gif" alt="Cartel animado RENARD">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Para Restaurantes Section -->
+    <section id="restaurantes" class="for-restaurants">
+        <div class="container">
+            <div class="section-content reversed">
+                <div class="section-text">
+                    <h2>Para Restaurantes</h2>
+                    <p>Únete a la plataforma que está revolucionando la gestión de reservas en el sector gastronómico.</p>
+                    <ul class="feature-list">
+                        <li>Gestiona tu disponibilidad de mesas en tiempo real</li>
+                        <li>Reduce las cancelaciones y las mesas vacías</li>
+                        <li>Atrae a nuevos clientes y fideliza a los existentes</li>
+                    </ul>
+                </div>
+                <div class="section-image">
+                    <div id="restaurantes-carousel">
+                        <div class="image-placeholder">
+                            <span>Cargando restaurantes...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cómo Funciona Section -->
+    <section id="como-funciona" class="how-it-works">
+        <div class="container">
+            <h2>¿Cómo funciona RENARD?</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Regístrate</h3>
+                    <p>Crea tu cuenta en menos de 2 minutos</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Explora</h3>
+                    <p>Descubre restaurantes que se adapten a tus gustos</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Reserva</h3>
+                    <p>Selecciona fecha, hora y confirma tu reserva</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Disfruta</h3>
+                    <p>Vive una experiencia gastronómica única</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>¿Listo para transformar tu experiencia gastronómica?</h2>
+                <p>Únete a miles de comensales y restaurantes que ya confían en RENARD</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="../public/assets/img/renard.png" alt="Logo RENARD" class="logo-img">
+                        <h3>RENARD</h3>
+                    </div>
+                    <p>Tu plataforma de reservas favorita. Descubre restaurantes increíbles y vive experiencias gastronómicas únicas.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#beneficios">Beneficios</a></li>
+                        <li><a href="#clientes">Para Clientes</a></li>
+                        <li><a href="#restaurantes">Para Restaurantes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li>apprenard@gmail.com</li>
+                        <li>+57 301 537 6814</li>
+                        <li>Bogotá D.C., Colombia</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RENARD. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Contacto -->
+    <div id="contactoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Contacto</h2>
+            <div class="modal-body">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>📧 Correo:</strong>
+                        <span>apprenard@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📞 Teléfono:</strong>
+                        <span>+57 301 537 6814</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📍 Ubicación:</strong>
+                        <span>Bogotá D.C., Colombia</span>
+                    </div>
+                </div>
+                <p style="margin-top: 20px; text-align: center; color: #666;">
+                    ¡Estamos aquí para ayudarte! Contáctanos para cualquier consulta.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../public/assets/js/home.js"></script>
+</body>
+</html>

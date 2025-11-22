@@ -41,6 +41,14 @@ app.use('/img/perfiles', express.static(path.join(__dirname, 'assets/img/perfile
 app.use('/img/producto', express.static(path.join(__dirname, 'assets/img/producto')));
 
 // ============================================
+// HOME FRONTEND
+// ============================================
+app.get('/', (req, res) => {
+  // Redirige al frontend que está en un servidor diferente
+  res.redirect('http://192.168.1.78:5500/renard_oficial/frontend/home/home.html');
+});
+
+// ============================================
 // IMPORTAR RUTAS DE API
 // ============================================
 import authRoutes from '../../src/routes/authRoutes.js';
@@ -107,7 +115,7 @@ export function showServerLink(port, isVM = true) {
   const host = isVM ? '127.0.0.1' : 'localhost';
   console.log(`🚀 Backend API corriendo en http://${host}:${port}`);
   console.log(`📡 Endpoints disponibles en http://${host}:${port}/renard/`);
-  console.log(` Frontend Live Server en http://${host}:5500/frontend/login/login.html`);
+  console.log(` Frontend Live Server en http://${host}:5500/frontend/home/home.html`);
 }
 
 console.log(
