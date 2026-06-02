@@ -1,8 +1,8 @@
-## 📚 Project Documentation
+## 📚 Documentation & Learning Journey
 
 For a complete understanding of the project, including requirements, architecture decisions, database design, UML diagrams, user stories, deployment considerations, and the overall development process, please visit the project Wiki.
 
-📖 **Project Wiki:** [https://github.com/EmCeeBroo/renard_2/wiki]
+📖 **[Project Wiki:](https://github.com/EmCeeBroo/renard_2/wiki)** `Documentation oficial the Renard - Restaurants reservations` 
 
 ---
 
@@ -14,7 +14,7 @@ The goal of this version is to provide a clearer view of the project's architect
 
 For those interested in exploring the original development process, team collaboration history, and complete commit timeline, the historical repository is available below.
 
-🔗 **Original Development Repository:** [Private repository for the moment]
+🔗 **[Original Development Repository:]()** `Private repository for the moment`
 
 ---
 
